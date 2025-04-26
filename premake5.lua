@@ -1,14 +1,10 @@
 workspace "OneVOneGame"
     architecture "x64"
-    startproject "Server"
+    startproject "Client"
 
     configurations { "Debug", "Release" }
 
     outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
-
-    IncludeDir = {}
-    IncludeDir["ENet"] = "vendor/enet/include"
-    IncludeDir["Shared"] = "shared"
 
     project "ENet"
         kind "StaticLib"
@@ -27,6 +23,9 @@ workspace "OneVOneGame"
             "vendor/enet/include"
         }
 
+        links {
+        }
+        
         filter "system:windows"
             systemversion "latest"
 
@@ -54,12 +53,15 @@ project "Client"
     }
 
     includedirs {
-        "%{IncludeDir.ENet}",
-        "%{IncludeDir.Shared}"
+        "vendor/enet/include",
+        "shared",
+        "client/client/src"
     }
 
     links {
-        "ENet"
+        "ENet",
+        "ws2_32.lib",
+        "winmm.lib"
     }
 
     filter "system:windows"
@@ -89,12 +91,14 @@ project "Server"
     }
 
     includedirs {
-        "%{IncludeDir.ENet}",
-        "%{IncludeDir.Shared}"
+        "vendor/enet/include",
+        "shared"
     }
 
     links {
-        "ENet"
+        "ENet",
+        "ws2_32.lib",
+        "winmm.lib"
     }
 
     filter "system:windows"
