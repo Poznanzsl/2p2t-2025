@@ -21,6 +21,7 @@ private:
 	void Render();
 private:
 	NetworkClient m_NetworkClient;
+	std::optional<uint32_t> m_Room;
 
 	GameState m_CurrentState;
 	bool m_Running;

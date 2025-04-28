@@ -1,5 +1,7 @@
 #include "NetworkClient.h"
 
+#include "PacketData.h"
+
 //=========================================================================
 //                     Config consts
 
@@ -9,7 +11,7 @@ namespace NetworkConfig {
     constexpr uint32_t INCOMING_BANDWIDTH = 0; 
     constexpr uint32_t OUTGOING_BANDWIDTH = 0; 
 
-    constexpr uint32_t CONNECT_TIMEOUT_MS = 5000;
+    constexpr uint32_t CONNECT_TIMEOUT_MS = 10000;
     constexpr uint32_t DISCONNECT_TIMEOUT_MS = 3000;
     constexpr int RECEIVE_WAIT_TIME_MS = 0;
 }
@@ -110,4 +112,63 @@ void NetworkClient::ReceiveData(){
             }
         }
     }
+}
+
+std::optional<uint32_t> NetworkClient::CreateRoom() {
+    PacketHeader request;
+    request.type = CREATE_ROOM;
+
+    ENetPacket* packet = enet_packet_create(&request, sizeof(request), ENET_PACKET_FLAG_RELIABLE);
+    enet_peer_send(m_ServerPeer, 0, packet);
+
+    ENetEvent event;
+    while (enet_host_service(m_Client, &event, NetworkConfig::DISCONNECT_TIMEOUT_MS) > 0) {
+        if (event.type == ENET_EVENT_TYPE_RECEIVE) {
+            if (event.packet->dataLength >= sizeof(PacketHeader)) {
+                PacketHeader* header = reinterpret_cast<PacketHeader*>(event.packet->data);
+                if (header->type == ROOM_DATA && event.packet->dataLength >= sizeof(RoomPacket)) {
+                    RoomPacket room = *reinterpret_cast<RoomPacket*>(event.packet->data);
+                    enet_packet_destroy(event.packet);
+                    
+                    return std::optional<int>(room.roomID);
+                }
+                enet_packet_destroy(event.packet);
+            }
+        }
+        else if(event.type == ENET_EVENT_TYPE_DISCONNECT){
+            return std::nullopt;
+        }
+    }
+    return std::nullopt;
+}
+
+std::optional<uint32_t> NetworkClient::JoinRoom(int roomID){
+    RoomPacket request;
+    PacketHeader header;
+    header.type = JOIN_ROOM;
+    request.header = header;
+    request.roomID = roomID;
+
+    ENetPacket* packet = enet_packet_create(&request, sizeof(request), ENET_PACKET_FLAG_RELIABLE);
+    enet_peer_send(m_ServerPeer, 0, packet);
+
+    ENetEvent event;
+    while (enet_host_service(m_Client, &event, NetworkConfig::DISCONNECT_TIMEOUT_MS) > 0) {
+        if (event.type == ENET_EVENT_TYPE_RECEIVE) {
+            if (event.packet->dataLength >= sizeof(PacketHeader)) {
+                PacketHeader* header = reinterpret_cast<PacketHeader*>(event.packet->data);
+                if (header->type == ROOM_DATA && event.packet->dataLength >= sizeof(RoomPacket)) {
+                    RoomPacket room = *reinterpret_cast<RoomPacket*>(event.packet->data);
+                    enet_packet_destroy(event.packet);
+
+                    return std::optional<int>(room.roomID);
+                }
+                enet_packet_destroy(event.packet);
+            }
+        }
+        else if (event.type == ENET_EVENT_TYPE_DISCONNECT) {
+            return std::nullopt;
+        }
+    }
+    return std::nullopt;
 }
