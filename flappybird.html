@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flappy Bird</title>
+  <link rel="stylesheet" href="stylebird.css" />
+</head>
+<body>
+    <div id="sun">
+        <span></span>
+    </div>
+  <div id="game">
+    <div id="circle"></div>
+  </div>
+<script>  
+  const circle = document.getElementById('circle');
+
+  let y = window.innerHeight / 2;   
+  circle.style.top = y + 'px';      
+  
+  let velocity = 0;
+  let gravity = 0.5;
+  let jumpStrength = -11;
+  
+  function gameLoop() {
+    velocity += gravity;
+    y += velocity;
+  
+    const maxY = window.innerHeight - circle.offsetHeight;
+    if (y > maxY) {
+      y = maxY;
+      velocity = 0;
+    }
+  
+    if (y < 0) {
+      y = 0;
+      velocity = 0;
+    }
+  
+    circle.style.top = y + 'px';
+  
+    requestAnimationFrame(gameLoop);
+  }
+  
+  document.addEventListener('keydown', (e) => {
+    if (e.code === 'Space') {
+      velocity = jumpStrength;
+    }
+  });
+  
+  gameLoop();
+</script>
+</body>
+</html>
