@@ -1,6 +1,9 @@
 #pragma once
 
+#include <SFML/Graphics.hpp>
+
 #include "network/NetworkClient.h"
+#include <memory>
 
 enum class GameState {
 	MainMenu,
@@ -22,6 +25,10 @@ private:
 private:
 	NetworkClient m_NetworkClient;
 	std::optional<uint32_t> m_Room;
+
+	std::unique_ptr<sf::RenderWindow> m_Window;
+	std::unique_ptr<sf::Texture> m_Texture;
+	std::unique_ptr<sf::Sprite> m_Sprite;
 
 	GameState m_CurrentState;
 	bool m_Running;

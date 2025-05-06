@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Server", "server\Server.vcxproj", "{7C62DFD0-6804-0AA7-51BF-1DFB3D0091F7}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Client", "client\Client.vcxproj", "{644D06AC-50EF-3082-39AA-44D625EBB7D2}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ENet", "ENet.vcxproj", "{F13E847C-DD75-850D-8662-6B107278010F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Server", "server\Server.vcxproj", "{7C62DFD0-6804-0AA7-51BF-1DFB3D0091F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,10 +13,6 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7C62DFD0-6804-0AA7-51BF-1DFB3D0091F7}.Debug|x64.ActiveCfg = Debug|x64
-		{7C62DFD0-6804-0AA7-51BF-1DFB3D0091F7}.Debug|x64.Build.0 = Debug|x64
-		{7C62DFD0-6804-0AA7-51BF-1DFB3D0091F7}.Release|x64.ActiveCfg = Release|x64
-		{7C62DFD0-6804-0AA7-51BF-1DFB3D0091F7}.Release|x64.Build.0 = Release|x64
 		{644D06AC-50EF-3082-39AA-44D625EBB7D2}.Debug|x64.ActiveCfg = Debug|x64
 		{644D06AC-50EF-3082-39AA-44D625EBB7D2}.Debug|x64.Build.0 = Debug|x64
 		{644D06AC-50EF-3082-39AA-44D625EBB7D2}.Release|x64.ActiveCfg = Release|x64
@@ -25,6 +21,10 @@ Global
 		{F13E847C-DD75-850D-8662-6B107278010F}.Debug|x64.Build.0 = Debug|x64
 		{F13E847C-DD75-850D-8662-6B107278010F}.Release|x64.ActiveCfg = Release|x64
 		{F13E847C-DD75-850D-8662-6B107278010F}.Release|x64.Build.0 = Release|x64
+		{7C62DFD0-6804-0AA7-51BF-1DFB3D0091F7}.Debug|x64.ActiveCfg = Debug|x64
+		{7C62DFD0-6804-0AA7-51BF-1DFB3D0091F7}.Debug|x64.Build.0 = Debug|x64
+		{7C62DFD0-6804-0AA7-51BF-1DFB3D0091F7}.Release|x64.ActiveCfg = Release|x64
+		{7C62DFD0-6804-0AA7-51BF-1DFB3D0091F7}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

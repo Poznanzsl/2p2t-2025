@@ -24,6 +24,11 @@ void Game::Init(){
 			std::cout << "Room created with code: " << m_Room.value() << std::endl;
 		}
 	}
+
+	m_Window = std::make_unique<sf::RenderWindow>(sf::VideoMode({ 1200, 800 }), "test");
+	m_Texture = std::make_unique<sf::Texture>("assets/cat.jpg");
+	m_Sprite = std::make_unique<sf::Sprite>(*m_Texture);
+
 	m_CurrentState = GameState::MainMenu;
 	m_Running = true;
 }
@@ -39,4 +44,7 @@ void Game::Update(){
 }
 
 void Game::Render(){
+	m_Window->clear();
+	m_Window->draw(*m_Sprite);
+	m_Window->display();
 }

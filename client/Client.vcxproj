@@ -58,7 +58,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\vendor\enet\include;..\shared;client\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\vendor\enet\include;vendor\SFML\include;..\shared;client\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -68,14 +68,21 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ws2_32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;winmm.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>vendor\SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST "$(SolutionDir)\client\vendor\SFML\bin\sfml-graphics-d-3.dll"\ (xcopy /Q /E /Y /I "$(SolutionDir)\client\vendor\SFML\bin\sfml-graphics-d-3.dll" "..\bin\Debug-windows-x86_64\Client" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)\client\vendor\SFML\bin\sfml-graphics-d-3.dll" "..\bin\Debug-windows-x86_64\Client" &gt; nul)
+IF EXIST "$(SolutionDir)\client\vendor\SFML\bin\sfml-window-d-3.dll"\ (xcopy /Q /E /Y /I "$(SolutionDir)\client\vendor\SFML\bin\sfml-window-d-3.dll" "..\bin\Debug-windows-x86_64\Client" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)\client\vendor\SFML\bin\sfml-window-d-3.dll" "..\bin\Debug-windows-x86_64\Client" &gt; nul)
+IF EXIST "$(SolutionDir)\client\vendor\SFML\bin\sfml-system-d-3.dll"\ (xcopy /Q /E /Y /I "$(SolutionDir)\client\vendor\SFML\bin\sfml-system-d-3.dll" "..\bin\Debug-windows-x86_64\Client" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)\client\vendor\SFML\bin\sfml-system-d-3.dll" "..\bin\Debug-windows-x86_64\Client" &gt; nul)
+IF EXIST "$(SolutionDir)\client\vendor\SFML\bin\sfml-audio-d-3.dll"\ (xcopy /Q /E /Y /I "$(SolutionDir)\client\vendor\SFML\bin\sfml-audio-d-3.dll" "..\bin\Debug-windows-x86_64\Client" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)\client\vendor\SFML\bin\sfml-audio-d-3.dll" "..\bin\Debug-windows-x86_64\Client" &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\vendor\enet\include;..\shared;client\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\vendor\enet\include;vendor\SFML\include;..\shared;client\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -89,8 +96,15 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>ws2_32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;ws2_32.lib;winmm.lib;sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-audio.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>vendor\SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST "$(SolutionDir)\client\vendor\SFML\bin\sfml-graphics-3.dll"\ (xcopy /Q /E /Y /I "$(SolutionDir)\client\vendor\SFML\bin\sfml-graphics-3.dll" "..\bin\Release-windows-x86_64\Client" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)\client\vendor\SFML\bin\sfml-graphics-3.dll" "..\bin\Release-windows-x86_64\Client" &gt; nul)
+IF EXIST "$(SolutionDir)\client\vendor\SFML\bin\sfml-window-3.dll"\ (xcopy /Q /E /Y /I "$(SolutionDir)\client\vendor\SFML\bin\sfml-window-3.dll" "..\bin\Release-windows-x86_64\Client" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)\client\vendor\SFML\bin\sfml-window-3.dll" "..\bin\Release-windows-x86_64\Client" &gt; nul)
+IF EXIST "$(SolutionDir)\client\vendor\SFML\bin\sfml-system-3.dll"\ (xcopy /Q /E /Y /I "$(SolutionDir)\client\vendor\SFML\bin\sfml-system-3.dll" "..\bin\Release-windows-x86_64\Client" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)\client\vendor\SFML\bin\sfml-system-3.dll" "..\bin\Release-windows-x86_64\Client" &gt; nul)
+IF EXIST "$(SolutionDir)\client\vendor\SFML\bin\sfml-audio-3.dll"\ (xcopy /Q /E /Y /I "$(SolutionDir)\client\vendor\SFML\bin\sfml-audio-3.dll" "..\bin\Release-windows-x86_64\Client" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)\client\vendor\SFML\bin\sfml-audio-3.dll" "..\bin\Release-windows-x86_64\Client" &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="client\src\core\Game.h" />
