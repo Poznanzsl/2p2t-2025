@@ -22,9 +22,6 @@ workspace "OneVOneGame"
         includedirs {
             "vendor/enet/include"
         }
-
-        links {
-        }
         
         filter "system:windows"
             systemversion "latest"
@@ -129,13 +126,17 @@ workspace "OneVOneGame"
         }
 
         links {
-            "ENet",
-            "ws2_32.lib",
-            "winmm.lib"
+            "ENet"
         }
 
         filter "system:windows"
             systemversion "latest"
+            links {"ws2_32.lib", "winmm.lib" }
+
+        filter "system:linux"
+            links { "pthread", "m" }
+            toolset "gcc"
+            buildoptions { "-std=c++11" }
 
         filter "configurations:Debug"
             runtime "Debug"
