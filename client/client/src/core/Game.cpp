@@ -15,7 +15,7 @@ void Game::Run(){
 
 void Game::Init(){
 	// Should find ip with open server on local network, rn using localhost for testing
-	if (m_NetworkClient.Connect("127.0.0.1", 12345)) {
+	if (m_NetworkClient.Connect("34.118.65.8", 12345)) {
 		m_Room = m_NetworkClient.CreateRoom();
 		if (!m_Room.has_value()) {
 			std::cerr << "Couldnt create room" << std::endl;

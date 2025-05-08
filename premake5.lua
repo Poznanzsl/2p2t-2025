@@ -136,7 +136,7 @@ workspace "OneVOneGame"
         filter "system:linux"
             links { "pthread", "m" }
             toolset "gcc"
-            buildoptions { "-std=c++11" }
+            buildoptions { "-std=c++17" }
 
         filter "configurations:Debug"
             runtime "Debug"

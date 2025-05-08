@@ -1,6 +1,6 @@
 #pragma once
+#include <cstdint>
 
-#pragma pack(push, 1)
 enum PacketType : uint32_t{ 
 	CREATE_ROOM,
 	JOIN_ROOM,
@@ -16,4 +16,3 @@ struct RoomPacket {
 	PacketHeader header;
 	uint32_t roomID;
 };
-#pragma pack(pop)
