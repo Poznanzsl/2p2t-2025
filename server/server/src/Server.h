@@ -9,8 +9,8 @@
 #include "enet/enet.h"
 
 struct Player {
-    int id;
-    ENetPeer* peer;
+    std::optional<int> connectedRoomID;
+    int ID;
 };
 
 struct Room {
@@ -33,6 +33,7 @@ private:
 
     std::unordered_set<int> m_RoomIds;
     std::unordered_map<int, Room> m_Rooms;
+    std::unordered_map<ENetPeer*, Player> m_ConnectedPlayers;
     int m_NextPlayerID;
 private:
     static constexpr uint16_t SERVER_PORT = 12345;

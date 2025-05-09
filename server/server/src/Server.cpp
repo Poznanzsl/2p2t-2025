@@ -50,6 +50,12 @@ void Server::ProcessEvent(ENetEvent& event) {
             char ip[32];
             enet_address_get_host_ip(&event.peer->address, ip, sizeof(ip));
             std::cout << "Client connected: " << ip << ":" << event.peer->address.port << std::endl;
+
+            Player p;
+            p.connectedRoomID = std::nullopt;
+            p.ID = m_NextPlayerID++;
+            m_ConnectedPlayers[event.peer] = p;
+
             break;
         }
         case ENET_EVENT_TYPE_RECEIVE: {
@@ -61,6 +67,19 @@ void Server::ProcessEvent(ENetEvent& event) {
             char ip[32];
             enet_address_get_host_ip(&event.peer->address, ip, sizeof(ip));
             std::cout << "Client disconnected: " << ip << ":" << event.peer->address.port << std::endl;
+
+            Player player = m_ConnectedPlayers[event.peer];
+            m_ConnectedPlayers.erase(event.peer);
+            if (player.connectedRoomID.has_value() && m_Rooms[player.connectedRoomID.value()].host.ID == player.ID) {
+                int roomID = player.connectedRoomID.value();
+
+                if (m_Rooms[roomID].other.has_value()) {
+                    m_Rooms[roomID].host = m_Rooms[roomID].other.value();
+                }
+                else {
+                    m_Rooms.erase(roomID);
+                }
+            }
             break;
         }
         default:
@@ -84,14 +103,11 @@ void Server::HandlePacketReceive(ENetEvent& event) {
             }
             m_RoomIds.insert(roomID);
 
-            Player player;
-            player.id = m_NextPlayerID++;
-            player.peer = event.peer;
-
             Room room;
-            room.host = player;
+            room.host = m_ConnectedPlayers[event.peer];
+            m_ConnectedPlayers[event.peer].connectedRoomID = std::optional<int>(roomID);
 
-            m_Rooms.insert({ roomID, room });
+            m_Rooms[roomID] = room;
 
             RoomPacket response;
             response.header.type = ROOM_DATA;
@@ -103,8 +119,8 @@ void Server::HandlePacketReceive(ENetEvent& event) {
                 ENET_PACKET_FLAG_RELIABLE 
             );
 
-            enet_peer_send(player.peer, 0, enetPacket);
-            std::cout << "Created room with ID: " << roomID << " by player with ID: " << player.id << std::endl;
+            enet_peer_send(event.peer, 0, enetPacket);
+            std::cout << "Created room with ID: " << roomID << " by player with ID: " << m_ConnectedPlayers[event.peer].ID << std::endl;
             break;
         }
 
@@ -115,10 +131,7 @@ void Server::HandlePacketReceive(ENetEvent& event) {
             if (m_RoomIds.find(roomID) == m_RoomIds.end()) {
                 std::cout << "Room with ID: " << roomID << " doesnt exist" << std::endl;
                 break;
-            }
-            Player player;
-            player.id = m_NextPlayerID++;
-            player.peer = event.peer;
+            }   
 
             Room room = m_Rooms[roomID];
 
@@ -126,7 +139,8 @@ void Server::HandlePacketReceive(ENetEvent& event) {
                 std::cout << "Place is already occupied" << std::endl;
                 break;
             }
-            room.other = std::optional<Player>(player);
+            room.other = std::optional<Player>(m_ConnectedPlayers[event.peer]);
+            m_ConnectedPlayers[event.peer].connectedRoomID = roomID;
 
             RoomPacket response;
             response.header.type = ROOM_DATA;
@@ -138,8 +152,8 @@ void Server::HandlePacketReceive(ENetEvent& event) {
                 ENET_PACKET_FLAG_RELIABLE
             );
 
-            enet_peer_send(player.peer, 0, enetPacket);
-            std::cout << "Player with ID: " << player.id << " joined room succesfully" << std::endl;
+            enet_peer_send(event.peer, 0, enetPacket);
+            std::cout << "Player with ID: " << m_ConnectedPlayers[event.peer].ID << " joined room: "<< roomID << " succesfully" << std::endl;
             break;
         }
 
