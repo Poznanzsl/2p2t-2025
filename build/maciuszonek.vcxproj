@@ -169,9 +169,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="header.h" />
+    <ClInclude Include="menu.h" />
+    <ClInclude Include="ui_utils.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.c" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="menu.cpp" />
+    <ClCompile Include="ui_utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="raylib.vcxproj">
