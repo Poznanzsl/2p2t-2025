@@ -17,14 +17,14 @@ export default function NavigationBar(){
             </View>
             
             <View style={styles.buttonAndTextBox}>
-                <Pressable style = {styles.button} onPress={() => navigation.navigate('findRecepies')}>
+                <Pressable style = {styles.button} onPress={() => navigation.navigate('findRecipes')}>
                     <Image source={require("../assets/NavigationBar/search.png")} style={styles.img}></Image>
                 </Pressable>
                 <Text style= {styles.text}>szukaj</Text>
             </View>
 
             <View style={styles.buttonAndTextBox}>
-                <Pressable style = {styles.button}  onPress={() => navigation.navigate('favoriteRecepies')}>
+                <Pressable style = {styles.button}  onPress={() => navigation.navigate('favoriteRecipes')}>
                     <Image source={require("../assets/NavigationBar/favorite.png")} style={styles.img}></Image>
                 </Pressable>
                 <Text style= {styles.text}>ulubione</Text>

@@ -3,8 +3,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 
 import HomeScreen from "./Screens/Home/HomeScreen";
-import FindRecpiesScreen from "./Screens/FindRecepies/FindRecepiesScreen";
-import FavoriteRecepiesScreen from "./Screens/FavoriteRecepies/FavoriteRecepiesScreen";
+import FindRecipesScreen from "./Screens/FindRecipes/FindRecipesScreen";
+import FavoriteRecipesScreen from "./Screens/FavoriteRecipes/FavoriteRecipesScreen";
 
 export default function App() {
 
@@ -14,8 +14,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="home" component={HomeScreen}></Stack.Screen>
-        <Stack.Screen name="findRecepies" component={FindRecpiesScreen}></Stack.Screen>
-        <Stack.Screen name="favoriteRecepies" component={FavoriteRecepiesScreen}></Stack.Screen>
+        <Stack.Screen name="findRecipes" component={FindRecipesScreen}></Stack.Screen>
+        <Stack.Screen name="favoriteRecipes" component={FavoriteRecipesScreen}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );
