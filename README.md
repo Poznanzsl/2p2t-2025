@@ -1,2 +1,2 @@
-# Hello from 2P2T
-Klasa 2p2t
+# Minesweeper Project
+made by Lukasz T. , Michal H. , Milosz G. , Zuzia K. 😊
