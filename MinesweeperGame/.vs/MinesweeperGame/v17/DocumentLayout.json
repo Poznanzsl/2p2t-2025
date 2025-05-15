@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "Q:\\C\u002B\u002B\\Minesweeper\\MinesweeperGame\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B9131902-1E27-472C-B0F4-266C57F04FB6}|MinesweeperGame\\MinesweeperGame.vcxproj|Q:\\C\u002B\u002B\\Minesweeper\\MinesweeperGame\\MinesweeperGame\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B9131902-1E27-472C-B0F4-266C57F04FB6}|MinesweeperGame\\MinesweeperGame.vcxproj|solutionrelative:MinesweeperGame\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9131902-1E27-472C-B0F4-266C57F04FB6}|MinesweeperGame\\MinesweeperGame.vcxproj|Q:\\C\u002B\u002B\\Minesweeper\\MinesweeperGame\\MinesweeperGame\\square.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B9131902-1E27-472C-B0F4-266C57F04FB6}|MinesweeperGame\\MinesweeperGame.vcxproj|solutionrelative:MinesweeperGame\\square.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "square.cpp",
+              "DocumentMoniker": "Q:\\C\u002B\u002B\\Minesweeper\\MinesweeperGame\\MinesweeperGame\\square.cpp",
+              "RelativeDocumentMoniker": "MinesweeperGame\\square.cpp",
+              "ToolTip": "Q:\\C\u002B\u002B\\Minesweeper\\MinesweeperGame\\MinesweeperGame\\square.cpp",
+              "RelativeToolTip": "MinesweeperGame\\square.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-05-15T18:57:39.345Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.cpp",
+              "DocumentMoniker": "Q:\\C\u002B\u002B\\Minesweeper\\MinesweeperGame\\MinesweeperGame\\main.cpp",
+              "RelativeDocumentMoniker": "MinesweeperGame\\main.cpp",
+              "ToolTip": "Q:\\C\u002B\u002B\\Minesweeper\\MinesweeperGame\\MinesweeperGame\\main.cpp",
+              "RelativeToolTip": "MinesweeperGame\\main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-05-15T18:40:22.89Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
