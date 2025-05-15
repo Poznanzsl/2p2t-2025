@@ -6,6 +6,7 @@ import HomeScreen from "./Screens/Home/HomeScreen";
 import FindRecipesScreen from "./Screens/FindRecipes/FindRecipesScreen";
 import FavoriteRecipesScreen from "./Screens/FavoriteRecipes/FavoriteRecipesScreen";
 
+
 export default function App() {
 
   const Stack = createNativeStackNavigator();

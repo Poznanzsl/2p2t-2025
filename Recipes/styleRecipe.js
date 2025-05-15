@@ -1,29 +1,31 @@
 import { StyleSheet } from "react-native"
+import { Colors } from "../assets/cssVariables"
 
 export default StyleSheet.create({
 
     box :{
-        width : '80%',
-        height:120,
-        backgroundColor:'lightgray',
+        width :350,
+        height:200,
+        backgroundColor:Colors.lightGreen,
         borderRadius:5,
         display:'flex',
         flexDirection:'row',
-        margin:10,
-        marginLeft:35,
+        marginBottom:'5%',
+        marginLeft:"3%",
     },
 
     time:{
         fontSize:15,
-        color:'black',
+        color: 'black',
         position:'absolute',
+        fontWeight:'300',
         top:35,
         left:5,
     },
     name:{
         fontSize:15,
-        color:'black',
-        fontWeight:'900',
+        color:Colors.yellow,
+        fontWeight:'600',
 
         position:'absolute',
         left:50,

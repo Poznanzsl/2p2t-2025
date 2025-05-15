@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { Colors } from "../../assets/cssVariables"; 
 
 export default StyleSheet.create({
   container: {
@@ -8,19 +9,44 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   boxRecipe: {
-    backgroundColor: '#fff',
-    width: 400,
-    height: 300,
-    bottom:95,
-    padding: 10,
+    backgroundColor:Colors.white,
+    width: '100%',
+    height: '80%',
+    bottom:'10%',
+
     display:"flex",
     position:'absolute',                                                                                                                                                            
 
-    borderColor: 'black',
-    borderWidth: 1,
+  },
+  textHeader:{
+    fontSize: 40,
+    position: 'absolute',
+    fontWeight:900,
+    color:Colors.yellow,
+
   },
   text:{
-    fontSize: 20,
-    position: 'absolute',
+    fontSize:25,
+    fontWeight:'600',
+    marginBottom:'5%',
+    marginTop:'3%',
+    marginLeft:'1%',
+  },
+  textEntry:{
+    fontSize:15,
+    fontWeight:'300',
+    marginTop:'3%',
+    textAlign:'center',
+  },
+  header:{
+    width:'100%',
+    height:'10%',
+    backgroundColor:Colors.darkGreen,
+
+    position:'absolute',
+    display:'flex',
+    justifyContent:'center',
+    alignItems:'center',
+    top:0,
   }
 });

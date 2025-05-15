@@ -1,59 +1,39 @@
 import { StyleSheet } from "react-native";
+import { Colors } from "../assets/cssVariables"; 
 
 export default StyleSheet.create({
 
     bar: {
         width: '100%',
         height: '10%',
-        backgroundColor:'white',
-        boxShadow:'5 2 5 gray',
+        backgroundColor: Colors.darkGreen,
+
         position:'absolute',
         bottom:0,
         justifyContent: 'center',
         display: 'flex',
         flexDirection: 'row',
 
-        // iOS shadow
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: -5 },
-        shadowOpacity: 0.25,
-        shadowRadius: 5,
-        
-        // Android shadow
-        elevation: 10,
-
     },
 
     button:{
-        width: 50,
-        height:50,
+        width: 100,
+        height: 100 ,
         color:'white',
-
-        margin: 10,
-        marginLeft:30,
-        marginRight:30,
 
         display: 'flex',
         justifyContent:'center',
         alignItems:'center',
-
     },
 
     img:{
         width:40,
         height:40,
     },
-
-    buttonText: {
-        color: 'white',
-        fontSize: 18,
-
-    },
-
     text:{
-        margin:1,
+        margin:'0%',
         fontSize:10,
-        color:'black',
+        color:Colors.yellow, 
         position: 'absolute',
         bottom:0,
     },
@@ -61,6 +41,7 @@ export default StyleSheet.create({
     buttonAndTextBox:{
         display:'flex',
         alignItems:'center',
+        justifyContent:'center',
     }
 
     
