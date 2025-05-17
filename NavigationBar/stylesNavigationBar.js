@@ -31,8 +31,7 @@ export default StyleSheet.create({
         height:40,
     },
     text:{
-        margin:'0%',
-        fontSize:10,
+        fontSize:12,
         color:Colors.yellow, 
         position: 'absolute',
         bottom:0,
@@ -42,6 +41,8 @@ export default StyleSheet.create({
         display:'flex',
         alignItems:'center',
         justifyContent:'center',
+        marginTop:"-3%",
+        height:'100%',
     }
 
     

@@ -1,6 +1,6 @@
 
 import NavigationBar from '../../NavigationBar/NavigationBar';
-import Recipe from '../../Recipes/Recipe';
+import RecipeCard from '../../RecipeCard/RecipeCard.js';
 import styles from './styleHomeScreen.js';
 import dataRecipes from "../../assets/Recipe.json";
 
@@ -11,10 +11,11 @@ import * as PhoneNavBar from 'expo-navigation-bar';
 
 
 
+
+
 export default function Home() {
 
     useEffect(()=>{  // to nie dizala do poprawy
-      console.log("eloeloe");
       PhoneNavBar.setBackgroundColorAsync('#2C3930');
       PhoneNavBar.setButtonStyleAsync('dark');
     },[]);
@@ -22,7 +23,7 @@ export default function Home() {
   return (
     <View style={styles.container}>
       <View style ={styles.header}>
-         <Text style= {styles.textHeader}>goodFood</Text>
+         <Text style= {styles.textHeader}>Yum & Done</Text>
        </View>
       <StatusBar backgroundColor='#2C3930' style='dark'  translucent={false} />
 
@@ -36,7 +37,7 @@ export default function Home() {
         <Text style= {styles.text}>najbardziej popularne przepisy:</Text>
 
         {dataRecipes.map(recipe=> (
-          <Recipe key = {recipe.id} name = {recipe.name} time = {recipe.time}></Recipe>
+          <RecipeCard key = {recipe.id} id = {recipe.id} name = {recipe.name} time = {recipe.time}></RecipeCard>
         ))}
       </ScrollView>
       <NavigationBar/> 

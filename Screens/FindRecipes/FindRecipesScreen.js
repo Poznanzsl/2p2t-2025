@@ -1,26 +1,31 @@
 
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import NavigationBar from '../../NavigationBar/NavigationBar';
+import styles from './styleFindRecipesScreen.js'
+import CategoryBox from '../../CategoryBox/CategoryBox.js';
 
 
 export default function FindRecpiesScreen() {
   return (
     <View style={styles.container}>
-      <Text>zakladka z kategoriami</Text>
       <StatusBar style="auto" />
+      <ScrollView style = {styles.scrollView}>
+        <View style={styles.row}>
+          <CategoryBox type = "15 min" emoji="🕛"/>
+          <CategoryBox type="30 min" emoji="🕛"/>
+        </View>
+        <View style={styles.row}>
+          <CategoryBox type="1 h" emoji="🕛" />
+          <CategoryBox type="salad" emoji="🥬"/>
+        </View>
+        <View style={styles.row}>
+          <CategoryBox type="fruit" emoji="🍓"/>
+          <CategoryBox type="snack" emoji="🥨"/>
+        </View>
+      </ScrollView>
       <NavigationBar/>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-});
