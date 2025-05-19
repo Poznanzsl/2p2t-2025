@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Flappy Bird - Gra</title>
+  <style>
+    body {
+      margin: 0;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background-color: #0e0914;
+      overflow: hidden;
+    }
+
+    h1 {
+      margin-top: 20px;
+      color: #ffffff;
+      text-shadow: 2px 2px #000;
+    }
+
+    canvas {
+      background-color: #70c5ce;
+      border: 3px solid #333;
+      margin-top: 10px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #OknaPrzeg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(27, 27, 27, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+#Kontener {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+  </style>
+</head>
+<body>
+  <h1>Flappy Bird</h1>
+  <canvas id="Plansza" width="500"></canvas>
+<div id="OknaPrzeg" style="display:none;">
+  <div id="Kontener">
+    <h2>Koniec gry!</h2>
+    <p>Twój wynik: <span id="wynik"></span></p>
+    <button onclick="startGry()">Zagraj ponownie</button>
+  </div>
+</div>
+  <script>
+    const plansza = document.getElementById("Plansza");
+    const kontekst = plansza.getContext("2d");
+
+    function ustawWysokosc() {
+      plansza.height = window.innerHeight - document.querySelector('h1').offsetHeight - 40;
+    }
+    ustawWysokosc();
+    window.addEventListener("resize", ustawWysokosc);
+
+
+    let ptakX = 50;
+    let ptakY = plansza.height / 2;
+    let grawitacja = 0.1 ;
+    let predkosc = 0;
+    let promienPtaka = 15;
+
+
+    let przeszkody = [];
+    let sPrzeszkody = 60;
+    let odstep = 165;
+    let pPrzeszkody = 1.4;
+    let ostatniaPrzeszkodaX = plansza.width;
+
+
+    let wynik = 0;
+
+    document.addEventListener("keydown", (e) => {
+      if (e.code === "Space") {
+        skok();
+      }
+    });
+    document.addEventListener("click", () => {
+  skok();
+});
+
+    przeszkody.push({
+      x: plansza.width,
+      wysokosc: Math.floor(Math.random() * (plansza.height - odstep - 100)) + 50
+    });
+
+    function skok() {
+      predkosc = -4.2;
+    }
+
+    function rysujPtaka() {
+      kontekst.beginPath();
+      kontekst.arc(ptakX, ptakY, promienPtaka, 0, Math.PI * 2);
+      kontekst.fillStyle = "yellow";
+      kontekst.fill();
+      kontekst.closePath();
+    }
+
+    function rysujPrzeszkody() {
+  for (let i = 0; i < przeszkody.length; i++) {
+    let prz = przeszkody[i];
+    kontekst.fillStyle = "green";
+    kontekst.fillRect(prz.x, 0, sPrzeszkody, prz.wysokosc);
+    kontekst.fillRect(prz.x, prz.wysokosc + odstep, sPrzeszkody, plansza.height);
+
+    prz.x -= pPrzeszkody;
+
+
+    if (
+      ptakX + promienPtaka > prz.x &&
+      ptakX - promienPtaka < prz.x + sPrzeszkody &&
+      (ptakY - promienPtaka < prz.wysokosc || ptakY + promienPtaka > prz.wysokosc + odstep)
+    ) {
+      Zresetuj();
+    }
+
+
+    if (prz.x + sPrzeszkody < 0) {
+      przeszkody.shift();
+      wynik++;
+    }
+  }
+
+
+  const ostatnia = przeszkody[przeszkody.length - 1];
+  if (ostatnia && ostatnia.x < plansza.width - 350) {
+    przeszkody.push({
+      x: plansza.width,
+      wysokosc: Math.floor(Math.random() * (plansza.height - odstep - 100)) + 50
+    });
+  }
+}
+
+
+function rysujWynik() {
+  const tekst = wynik;
+  kontekst.font = "3vw Arial";
+  const szerokoscTekstu = kontekst.measureText(tekst).width;
+  const x = (plansza.width - szerokoscTekstu) / 2;
+
+  kontekst.lineWidth = 3;
+  kontekst.strokeStyle = "black";
+  kontekst.strokeText(tekst, x, 60);
+
+  kontekst.fillStyle = "orange";
+  kontekst.fillText(tekst, x, 60);
+}
+
+
+
+let graAktywna = true;
+
+function Zresetuj() {
+  graAktywna = false;
+  document.getElementById("wynik").textContent = wynik;
+  document.getElementById("OknaPrzeg").style.display = "flex";
+}
+
+function startGry() {
+  document.getElementById("OknaPrzeg").style.display = "none";
+  ptakY = plansza.height / 2;
+  predkosc = 0;
+  przeszkody = [{
+    x: plansza.width,
+    wysokosc: Math.floor(Math.random() * (plansza.height - odstep - 100)) + 50
+  }];
+  wynik = 0;
+  graAktywna = true;
+  aktualizujGre();
+}
+
+    function aktualizujGre() {
+  if (!graAktywna) return;
+
+  kontekst.clearRect(0, 0, plansza.width, plansza.height);
+
+  rysujPtaka();
+  rysujPrzeszkody();
+  rysujWynik();
+
+  predkosc += grawitacja;
+  ptakY += predkosc;
+
+  if (ptakY + promienPtaka > plansza.height || ptakY - promienPtaka < 0) {
+    Zresetuj();
+    return;
+  }
+
+  requestAnimationFrame(aktualizujGre);
+}
+
+
+    aktualizujGre();
+  </script>
+</body>
+</html>
