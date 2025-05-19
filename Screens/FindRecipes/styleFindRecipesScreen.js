@@ -12,16 +12,11 @@ export default StyleSheet.create({
      scrollView:{
         marginTop:'5%',
         width:'100%',
-        height:'100%',
-
-        display:'flex',
-        flexWrap:'wrap',
      },
       row:{
         width:'100%',
         display:'flex',
         flexDirection:'row',
-        height:'30%',
     },
      
 })

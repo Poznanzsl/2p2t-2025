@@ -15,11 +15,6 @@ import * as PhoneNavBar from 'expo-navigation-bar';
 
 export default function Home() {
 
-    useEffect(()=>{  // to nie dizala do poprawy
-      PhoneNavBar.setBackgroundColorAsync('#2C3930');
-      PhoneNavBar.setButtonStyleAsync('dark');
-    },[]);
-
   return (
     <View style={styles.container}>
       <View style ={styles.header}>
@@ -43,4 +38,5 @@ export default function Home() {
       <NavigationBar/> 
     </View>
   );
+  
 }

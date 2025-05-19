@@ -18,11 +18,11 @@ export default function FindRecpiesScreen() {
         </View>
         <View style={styles.row}>
           <CategoryBox type="1 h" emoji="🕛" />
-          <CategoryBox type="salad" emoji="🥬"/>
+          <CategoryBox type="obiad" emoji="🍽️"/>
         </View>
         <View style={styles.row}>
-          <CategoryBox type="fruit" emoji="🍓"/>
-          <CategoryBox type="snack" emoji="🥨"/>
+          <CategoryBox type="sniadanie" emoji="🍳"/>
+          <CategoryBox type="przystawki" emoji="🥨"/>
         </View>
       </ScrollView>
       <NavigationBar/>

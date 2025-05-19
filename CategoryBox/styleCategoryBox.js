@@ -19,7 +19,7 @@ export default StyleSheet.create({
 
     },
     text: {
-        fontSize:30,
+        fontSize:20,
         marginTop:'10%',
         fontWeight:'500',
         color:Colors.yellow,

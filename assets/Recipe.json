@@ -2,16 +2,19 @@
   {
     "id": 1,
     "name": "Kurczak w sosie",
-    "time": 30
+    "time": 30,
+    "type": "obiad"
   },
   {
     "id": 2,
     "name": "Spaghetti Carbonara",
-    "time": 20
+    "time": 20,
+    "type": "obiad"
   },
     {
     "id": 3,
     "name": "kurczak w czekoladzie ",
-    "time": 60
+    "time": 60,
+    "type": "przystawki"
   }
 ]
