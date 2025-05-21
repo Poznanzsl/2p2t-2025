@@ -25,75 +25,84 @@
       display: block;
       margin-left: auto;
       margin-right: auto;
+      width: 100%;
+      height: auto;
+      max-width: 550px;
     }
+
     #OknaPrzeg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(27, 27, 27, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-}
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(27, 27, 27, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
 
-#Kontener {
-  background-color: white;
-  padding: 30px;
-  border-radius: 10px;
-  text-align: center;
-  font-size: 1.5em;
-}
-
+    #Kontener {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 1.5em;
+    }
   </style>
 </head>
 <body>
   <h1>Flappy Bird</h1>
-  <canvas id="Plansza" width="500"></canvas>
-<div id="OknaPrzeg" style="display:none;">
-  <div id="Kontener">
-    <h2>Koniec gry!</h2>
-    <p>Twój wynik: <span id="wynik"></span></p>
-    <button onclick="startGry()">Zagraj ponownie</button>
+  <canvas id="Plansza" width="500" height="650"></canvas>
+
+  <div id="OknaPrzeg" style="display:none;">
+    <div id="Kontener">
+      <h2>Koniec gry!</h2>
+      <p>Twój wynik: <span id="wynik"></span></p>
+      <button onclick="startGry()">Zagraj ponownie</button>
+    </div>
   </div>
-</div>
+
   <script>
     const plansza = document.getElementById("Plansza");
     const kontekst = plansza.getContext("2d");
 
-    function ustawWysokosc() {
-      plansza.height = window.innerHeight - document.querySelector('h1').offsetHeight - 40;
-    }
-    ustawWysokosc();
-    window.addEventListener("resize", ustawWysokosc);
+    function RozmiarCanvas() {
+      const aspect = 650 / 500;
+      let szerokosc = Math.min(window.innerWidth, 550);
+      let wysokosc = szerokosc * aspect;
 
+      plansza.style.width = szerokosc + "px";
+      plansza.style.height = wysokosc + "px";
+    }
+
+    RozmiarCanvas();
+    window.addEventListener("resize", RozmiarCanvas);
 
     let ptakX = 50;
     let ptakY = plansza.height / 2;
-    let grawitacja = 0.1 ;
+    let grawitacja = 0.1;
     let predkosc = 0;
     let promienPtaka = 15;
 
-
     let przeszkody = [];
     let sPrzeszkody = 60;
-    let odstep = 165;
-    let pPrzeszkody = 1.4;
-    let ostatniaPrzeszkodaX = plansza.width;
-
+    let odstep = 195;
+    let pPrzeszkody = 1.6;
 
     let wynik = 0;
+    let graAktywna = true;
 
     document.addEventListener("keydown", (e) => {
       if (e.code === "Space") {
         skok();
       }
     });
+
     document.addEventListener("click", () => {
-  skok();
-});
+      skok();
+    });
 
     przeszkody.push({
       x: plansza.width,
@@ -103,7 +112,12 @@
     function skok() {
       predkosc = -4.2;
     }
+const tloObraz = new Image();
+tloObraz.src = "FlappyBg.avif";  
 
+function rysujTlo() {
+  kontekst.drawImage(tloObraz, 0, 0, plansza.width, plansza.height);
+}
     function rysujPtaka() {
       kontekst.beginPath();
       kontekst.arc(ptakX, ptakY, promienPtaka, 0, Math.PI * 2);
@@ -112,31 +126,41 @@
       kontekst.closePath();
     }
 
-    function rysujPrzeszkody() {
+function rysujPrzeszkody() {
   for (let i = 0; i < przeszkody.length; i++) {
     let prz = przeszkody[i];
-    kontekst.fillStyle = "green";
-    kontekst.fillRect(prz.x, 0, sPrzeszkody, prz.wysokosc);
-    kontekst.fillRect(prz.x, prz.wysokosc + odstep, sPrzeszkody, plansza.height);
+
+
+    rysujTrabe(prz.x, prz.wysokosc, prz.wysokosc, true);
+    rysujTrabe(prz.x, prz.wysokosc + odstep, plansza.height - (prz.wysokosc + odstep), false);
 
     prz.x -= pPrzeszkody;
 
 
-    if (
-      ptakX + promienPtaka > prz.x &&
-      ptakX - promienPtaka < prz.x + sPrzeszkody &&
-      (ptakY - promienPtaka < prz.wysokosc || ptakY + promienPtaka > prz.wysokosc + odstep)
-    ) {
-      Zresetuj();
-    }
+const szerokoscKonca = sPrzeszkody + 20;
+const przesuniecie = (szerokoscKonca - sPrzeszkody) / 2;
+
+let kolizjaGora =
+  ptakX + promienPtaka > prz.x - przesuniecie &&
+  ptakX - promienPtaka < prz.x + sPrzeszkody + przesuniecie &&
+  ptakY - promienPtaka < prz.wysokosc + 20;
+
+let kolizjaDol =
+  ptakX + promienPtaka > prz.x - przesuniecie &&
+  ptakX - promienPtaka < prz.x + sPrzeszkody + przesuniecie &&
+  ptakY + promienPtaka > prz.wysokosc + odstep - 20;
+
+if (kolizjaGora || kolizjaDol) {
+  Zresetuj();
+}
 
 
+ 
     if (prz.x + sPrzeszkody < 0) {
       przeszkody.shift();
       wynik++;
     }
   }
-
 
   const ostatnia = przeszkody[przeszkody.length - 1];
   if (ostatnia && ostatnia.x < plansza.width - 350) {
@@ -147,64 +171,88 @@
   }
 }
 
+function rysujTrabe(x, y, wysokosc, odwrocona) {
+  const kolorRury = kontekst.createLinearGradient(x, y, x + sPrzeszkody, y);
+  kolorRury.addColorStop(0, "#3c7114");
+  kolorRury.addColorStop(1, "#3c7114");
 
-function rysujWynik() {
-  const tekst = wynik;
-  kontekst.font = "3vw Arial";
-  const szerokoscTekstu = kontekst.measureText(tekst).width;
-  const x = (plansza.width - szerokoscTekstu) / 2;
+  kontekst.fillStyle = kolorRury;
+  kontekst.strokeStyle = "#1e4004";
+  kontekst.lineWidth = 4;
 
-  kontekst.lineWidth = 3;
-  kontekst.strokeStyle = "black";
-  kontekst.strokeText(tekst, x, 60);
+  const szerokoscKonca = sPrzeszkody + 20;
+  const przesuniecie = (szerokoscKonca - sPrzeszkody) / 2;
 
-  kontekst.fillStyle = "orange";
-  kontekst.fillText(tekst, x, 60);
+  if (odwrocona) {
+
+    kontekst.fillRect(x, y - wysokosc, sPrzeszkody, wysokosc);
+    kontekst.strokeRect(x, y - wysokosc, sPrzeszkody, wysokosc);
+
+    kontekst.fillRect(x - przesuniecie, y, szerokoscKonca, 20);
+    kontekst.strokeRect(x - przesuniecie, y, szerokoscKonca, 20);
+  } else {
+
+    kontekst.fillRect(x, y, sPrzeszkody, wysokosc);
+    kontekst.strokeRect(x, y, sPrzeszkody, wysokosc);
+
+    kontekst.fillRect(x - przesuniecie, y - 20, szerokoscKonca, 20);
+    kontekst.strokeRect(x - przesuniecie, y - 20, szerokoscKonca, 20);
+  }
 }
 
 
+    function rysujWynik() {
+      const tekst = wynik;
+      kontekst.font = "40px Arial";
+      const szerokoscTekstu = kontekst.measureText(tekst).width;
+      const x = (plansza.width - szerokoscTekstu) / 2;
 
-let graAktywna = true;
+      kontekst.lineWidth = 3;
+      kontekst.strokeStyle = "Black";
+      kontekst.strokeText(tekst, x, 60);
 
-function Zresetuj() {
-  graAktywna = false;
-  document.getElementById("wynik").textContent = wynik;
-  document.getElementById("OknaPrzeg").style.display = "flex";
-}
+      kontekst.fillStyle = "#276864";
+      kontekst.fillText(tekst, x, 60);
+    }
 
-function startGry() {
-  document.getElementById("OknaPrzeg").style.display = "none";
-  ptakY = plansza.height / 2;
-  predkosc = 0;
-  przeszkody = [{
-    x: plansza.width,
-    wysokosc: Math.floor(Math.random() * (plansza.height - odstep - 100)) + 50
-  }];
-  wynik = 0;
-  graAktywna = true;
-  aktualizujGre();
-}
+    function Zresetuj() {
+      graAktywna = false;
+      document.getElementById("wynik").textContent = wynik;
+      document.getElementById("OknaPrzeg").style.display = "flex";
+    }
+
+    function startGry() {
+      document.getElementById("OknaPrzeg").style.display = "none";
+      ptakY = plansza.height / 2;
+      predkosc = 0;
+      przeszkody = [{
+        x: plansza.width,
+        wysokosc: Math.floor(Math.random() * (plansza.height - odstep - 100)) + 50
+      }];
+      wynik = 0;
+      graAktywna = true;
+      aktualizujGre();
+    }
 
     function aktualizujGre() {
-  if (!graAktywna) return;
+      if (!graAktywna) return;
 
-  kontekst.clearRect(0, 0, plansza.width, plansza.height);
+      kontekst.clearRect(0, 0, plansza.width, plansza.height);
+rysujTlo();
+      rysujPtaka();
+      rysujPrzeszkody();
+      rysujWynik();
 
-  rysujPtaka();
-  rysujPrzeszkody();
-  rysujWynik();
+      predkosc += grawitacja;
+      ptakY += predkosc;
 
-  predkosc += grawitacja;
-  ptakY += predkosc;
+      if (ptakY + promienPtaka > plansza.height || ptakY - promienPtaka < 0) {
+        Zresetuj();
+        return;
+      }
 
-  if (ptakY + promienPtaka > plansza.height || ptakY - promienPtaka < 0) {
-    Zresetuj();
-    return;
-  }
-
-  requestAnimationFrame(aktualizujGre);
-}
-
+      requestAnimationFrame(aktualizujGre);
+    }
 
     aktualizujGre();
   </script>
