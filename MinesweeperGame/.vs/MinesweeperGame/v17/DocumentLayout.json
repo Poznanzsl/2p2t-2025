@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "Q:\\C\u002B\u002B\\Minesweeper\\MinesweeperGame\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B9131902-1E27-472C-B0F4-266C57F04FB6}|MinesweeperGame\\MinesweeperGame.vcxproj|Q:\\C\u002B\u002B\\Minesweeper\\MinesweeperGame\\MinesweeperGame\\Grid\\Grid.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B9131902-1E27-472C-B0F4-266C57F04FB6}|MinesweeperGame\\MinesweeperGame.vcxproj|solutionrelative:MinesweeperGame\\Grid\\Grid.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B9131902-1E27-472C-B0F4-266C57F04FB6}|MinesweeperGame\\MinesweeperGame.vcxproj|Q:\\C\u002B\u002B\\Minesweeper\\MinesweeperGame\\MinesweeperGame\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B9131902-1E27-472C-B0F4-266C57F04FB6}|MinesweeperGame\\MinesweeperGame.vcxproj|solutionrelative:MinesweeperGame\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B9131902-1E27-472C-B0F4-266C57F04FB6}|MinesweeperGame\\MinesweeperGame.vcxproj|Q:\\C\u002B\u002B\\Minesweeper\\MinesweeperGame\\MinesweeperGame\\square.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B9131902-1E27-472C-B0F4-266C57F04FB6}|MinesweeperGame\\MinesweeperGame.vcxproj|solutionrelative:MinesweeperGame\\square.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{B9131902-1E27-472C-B0F4-266C57F04FB6}|MinesweeperGame\\MinesweeperGame.vcxproj|Q:\\C\u002B\u002B\\Minesweeper\\MinesweeperGame\\MinesweeperGame\\GameEngine\\GameEngine.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B9131902-1E27-472C-B0F4-266C57F04FB6}|MinesweeperGame\\MinesweeperGame.vcxproj|solutionrelative:MinesweeperGame\\GameEngine\\GameEngine.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9131902-1E27-472C-B0F4-266C57F04FB6}|MinesweeperGame\\MinesweeperGame.vcxproj|Q:\\C\u002B\u002B\\Minesweeper\\MinesweeperGame\\MinesweeperGame\\GameEngine\\gameEngine.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B9131902-1E27-472C-B0F4-266C57F04FB6}|MinesweeperGame\\MinesweeperGame.vcxproj|solutionrelative:MinesweeperGame\\GameEngine\\gameEngine.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,29 +34,52 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "square.cpp",
-              "DocumentMoniker": "Q:\\C\u002B\u002B\\Minesweeper\\MinesweeperGame\\MinesweeperGame\\square.cpp",
-              "RelativeDocumentMoniker": "MinesweeperGame\\square.cpp",
-              "ToolTip": "Q:\\C\u002B\u002B\\Minesweeper\\MinesweeperGame\\MinesweeperGame\\square.cpp",
-              "RelativeToolTip": "MinesweeperGame\\square.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAANAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "GameEngine.cpp",
+              "DocumentMoniker": "Q:\\C\u002B\u002B\\Minesweeper\\MinesweeperGame\\MinesweeperGame\\GameEngine\\GameEngine.cpp",
+              "RelativeDocumentMoniker": "MinesweeperGame\\GameEngine\\GameEngine.cpp",
+              "ToolTip": "Q:\\C\u002B\u002B\\Minesweeper\\MinesweeperGame\\MinesweeperGame\\GameEngine\\GameEngine.cpp",
+              "RelativeToolTip": "MinesweeperGame\\GameEngine\\GameEngine.cpp",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACAAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-05-15T18:57:39.345Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-16T22:46:59.314Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Grid.cpp",
+              "DocumentMoniker": "Q:\\C\u002B\u002B\\Minesweeper\\MinesweeperGame\\MinesweeperGame\\Grid\\Grid.cpp",
+              "RelativeDocumentMoniker": "MinesweeperGame\\Grid\\Grid.cpp",
+              "ToolTip": "Q:\\C\u002B\u002B\\Minesweeper\\MinesweeperGame\\MinesweeperGame\\Grid\\Grid.cpp",
+              "RelativeToolTip": "MinesweeperGame\\Grid\\Grid.cpp",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACAAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-05-16T20:21:59.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GameEngine.hpp",
+              "DocumentMoniker": "Q:\\C\u002B\u002B\\Minesweeper\\MinesweeperGame\\MinesweeperGame\\GameEngine\\GameEngine.hpp",
+              "RelativeDocumentMoniker": "MinesweeperGame\\GameEngine\\GameEngine.hpp",
+              "ToolTip": "Q:\\C\u002B\u002B\\Minesweeper\\MinesweeperGame\\MinesweeperGame\\GameEngine\\GameEngine.hpp",
+              "RelativeToolTip": "MinesweeperGame\\GameEngine\\GameEngine.hpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-16T20:31:47.546Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "main.cpp",
               "DocumentMoniker": "Q:\\C\u002B\u002B\\Minesweeper\\MinesweeperGame\\MinesweeperGame\\main.cpp",
               "RelativeDocumentMoniker": "MinesweeperGame\\main.cpp",
               "ToolTip": "Q:\\C\u002B\u002B\\Minesweeper\\MinesweeperGame\\MinesweeperGame\\main.cpp",
               "RelativeToolTip": "MinesweeperGame\\main.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-05-15T18:40:22.89Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-16T15:22:51.442Z"
             }
           ]
         }

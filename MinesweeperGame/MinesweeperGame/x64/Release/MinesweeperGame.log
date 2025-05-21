@@ -1,0 +1,17 @@
+﻿  GameEngine.cpp
+  Grid.cpp
+Q:\C++\Minesweeper\MinesweeperGame\MinesweeperGame\Grid\Grid.cpp(9,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  main.cpp
+Q:\C++\Minesweeper\MinesweeperGame\MinesweeperGame\main.cpp(11,102): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+Q:\C++\Minesweeper\MinesweeperGame\MinesweeperGame\main.cpp(11,71): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 98 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  MinesweeperGame.vcxproj -> Q:\C++\Minesweeper\MinesweeperGame\x64\Release\MinesweeperGame.exe
+  'pwsh.exe' is not recognized as an internal or external command,
+  operable program or batch file.
+  AuthorizationManager check failed.
+      + CategoryInfo          : SecurityError: (:) [], ParentContainsErrorRecordException
+      + FullyQualifiedErrorId : UnauthorizedAccess
+C:\Users\milek\Documents\vcpkg\vcpkg-master\scripts\buildsystems\msbuild\vcpkg.targets(247,5): warning : [vcpkg] Failed to gather app local DLL dependencies, program may not run. Set VcpkgApplocalDeps to false in your project file to suppress this warning. PowerShell arguments: -ExecutionPolicy Bypass -noprofile -File "C:\Users\milek\Documents\vcpkg\vcpkg-master\scripts\buildsystems\msbuild\applocal.ps1" "Q:\C++\Minesweeper\MinesweeperGame\x64\Release\MinesweeperGame.exe" "C:\Users\milek\Documents\vcpkg\vcpkg-master\installed\x64-windows\bin" "x64\Release\MinesweeperGame.tlog\MinesweeperGame.write.1u.tlog" "x64\Release\vcpkg.applocal.log"

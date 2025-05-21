@@ -13,7 +13,7 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Square">
+    <Filter Include="Source Files\GameEngine">
       <UniqueIdentifier>{d6af9e61-b125-4e03-8d69-d7a3e136f4a2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -21,8 +21,30 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="square.cpp">
-      <Filter>Source Files\Square</Filter>
+    <ClCompile Include="GameEngine\GameEngine.cpp">
+      <Filter>Source Files\GameEngine</Filter>
     </ClCompile>
+    <ClCompile Include="Grid\Grid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="plan.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Grid\Grid.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine\GameEngine.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Textures\x.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Fonts\SCP-black.ttf" />
   </ItemGroup>
 </Project>
