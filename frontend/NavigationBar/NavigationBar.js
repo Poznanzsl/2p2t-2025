@@ -29,6 +29,13 @@ export default function NavigationBar(){
                 </Pressable>
                 <Text style= {styles.text}>ulubione</Text>
             </View>
+
+            <View style={styles.buttonAndTextBox}>
+                <Pressable style = {styles.button}  onPress={() => navigation.navigate('Ai')}>
+                    <Image source={require("../assets/NavigationBar/ai.png")} style={styles.img}></Image>
+                </Pressable>
+                <Text style= {styles.text}>AI</Text>
+            </View>
             
         </View>
     );
