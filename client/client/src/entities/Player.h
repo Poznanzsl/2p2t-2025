@@ -25,6 +25,11 @@ private:
 
     bool m_IsSwinging;
     float m_SwordCooldown;
+    float m_SwingDuration;
+    float m_SwingElapsed;
+    float m_SwingStartAngle;
+    float m_SwingEndAngle;
+
     float m_GunCooldown;
 
     void UpdateSword(float dt);

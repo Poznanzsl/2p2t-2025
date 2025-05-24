@@ -9,6 +9,8 @@ Player::Player(float x, float y)
 
     m_SwordHitbox.setSize({ 60, 20 });
     m_SwordHitbox.setFillColor(sf::Color::Yellow);
+
+    m_SwingDuration = 0.2f;
 }
 
 void Player::HandleInput(const sf::RenderWindow& window) {
@@ -53,6 +55,7 @@ std::optional<std::unique_ptr<Entity>> Player::TryShoot(const sf::RenderWindow& 
     return std::nullopt;
 }
 
+
 void Player::SwingSword(const sf::Vector2f& target) {
     sf::Vector2f dir = target - m_Position;
     float len = std::sqrt(dir.x * dir.x + dir.y * dir.y);
@@ -61,19 +64,31 @@ void Player::SwingSword(const sf::Vector2f& target) {
 
     m_IsSwinging = true;
     m_SwordCooldown = 1.0f;
+    m_SwingElapsed = 0.0f;
 
-    m_SwordHitbox.setRotation(sf::degrees(std::atan2(dir.y, dir.x)) * 180 / 3.14159f);
-    m_SwordHitbox.setPosition(m_Position + dir * 60.0f);
+    float baseAngle = std::atan2(dir.y, dir.x) * 180.f / 3.14f;
+
+    m_SwingStartAngle = baseAngle - 60.f;
+    m_SwingEndAngle = baseAngle + 60.f;
+
+    m_SwordHitbox.setPosition(m_Position + dir * 60.f);
+    m_SwordHitbox.setRotation(sf::degrees(m_SwingStartAngle));
 }
 
 
 void Player::UpdateSword(float dt) {
-    if (m_IsSwinging) {
-        static float swingDuration = 0.2f;
-        swingDuration -= dt;
-        if (swingDuration <= 0) {
-            m_IsSwinging = false;
-            swingDuration = 0.2f;
-        }
+    if (!m_IsSwinging)
+        return;
+
+    m_SwingElapsed += dt;
+    float progress = m_SwingElapsed / m_SwingDuration;
+
+    if (progress >= 1.0f) {
+        m_IsSwinging = false;
+        m_SwordHitbox.setRotation(sf::degrees(m_SwingEndAngle));
+    }
+    else {
+        float currentAngle = m_SwingStartAngle + (m_SwingEndAngle - m_SwingStartAngle) * progress;
+        m_SwordHitbox.setRotation(sf::degrees(currentAngle));
     }
 }
