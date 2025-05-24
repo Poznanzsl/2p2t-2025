@@ -4,6 +4,9 @@
     <Filter Include="core">
       <UniqueIdentifier>{4E40957C-3A77-960D-E363-7C10CF79120F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="entities">
+      <UniqueIdentifier>{AA3F76DB-960C-D1E6-BF25-BF8EAB510675}</UniqueIdentifier>
+    </Filter>
     <Filter Include="network">
       <UniqueIdentifier>{AF02550B-1BE2-D3A6-24FA-5E7D90583A08}</UniqueIdentifier>
     </Filter>
@@ -12,17 +15,33 @@
     <ClInclude Include="client\src\core\Game.h">
       <Filter>core</Filter>
     </ClInclude>
+    <ClInclude Include="client\src\entities\Entity.h">
+      <Filter>entities</Filter>
+    </ClInclude>
+    <ClInclude Include="client\src\entities\Player.h">
+      <Filter>entities</Filter>
+    </ClInclude>
     <ClInclude Include="client\src\network\NetworkClient.h">
       <Filter>network</Filter>
     </ClInclude>
+    <ClInclude Include="client\src\core\gameStates\GameState.h" />
+    <ClInclude Include="client\src\core\gameStates\MainMenuState.h" />
+    <ClInclude Include="client\src\core\gameStates\GameplayState.h" />
+    <ClInclude Include="client\src\entities\Bullet.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="client\src\core\Game.cpp">
       <Filter>core</Filter>
     </ClCompile>
+    <ClCompile Include="client\src\entities\Player.cpp">
+      <Filter>entities</Filter>
+    </ClCompile>
     <ClCompile Include="client\src\main.cpp" />
     <ClCompile Include="client\src\network\NetworkClient.cpp">
       <Filter>network</Filter>
     </ClCompile>
+    <ClCompile Include="client\src\core\gameStates\MainMenuState.cpp" />
+    <ClCompile Include="client\src\core\gameStates\GameplayState.cpp" />
+    <ClCompile Include="client\src\entities\Bullet.cpp" />
   </ItemGroup>
 </Project>

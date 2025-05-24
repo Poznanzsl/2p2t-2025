@@ -1,11 +1,15 @@
 #pragma once
 
+#include <memory>
 #include <SFML/Graphics.hpp>
 
 #include "network/NetworkClient.h"
-#include <memory>
 
-enum class GameState {
+#include "gameStates/GameState.h"
+#include "gameStates/GameplayState.h"
+#include "gameStates/MainMenuState.h"
+
+enum class GameStateEnum {
 	MainMenu,
 	Lobby,
 	Playing,
@@ -15,21 +19,22 @@ enum class GameState {
 
 class Game {
 public:
+	Game();
 	void Run();
 private:
 	void Init();
-	void Shutdown();
+	void ChangeGameState(GameStateEnum state);
 	void HandleEvents();
-	void Update();
+	void Update(float dt);
 	void Render();
 private:
 	NetworkClient m_NetworkClient;
 	std::optional<uint32_t> m_Room;
 
-	std::unique_ptr<sf::RenderWindow> m_Window;
-	std::unique_ptr<sf::Texture> m_Texture;
-	std::unique_ptr<sf::Sprite> m_Sprite;
+	sf::RenderWindow m_Window;
+	sf::Clock m_Clock;
 
-	GameState m_CurrentState;
+	std::unique_ptr<GameState> m_CurrentState;
+	GameStateEnum m_CurrentStateEnum;
 	bool m_Running;
 };

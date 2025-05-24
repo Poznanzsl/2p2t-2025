@@ -62,7 +62,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
     <Link>
@@ -89,7 +89,7 @@ IF EXIST "$(SolutionDir)\client\vendor\SFML\bin\sfml-audio-d-3.dll"\ (xcopy /Q /
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
     <Link>
@@ -108,10 +108,20 @@ IF EXIST "$(SolutionDir)\client\vendor\SFML\bin\sfml-audio-3.dll"\ (xcopy /Q /E 
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="client\src\core\Game.h" />
+    <ClInclude Include="client\src\core\gameStates\GameplayState.h" />
+    <ClInclude Include="client\src\core\gameStates\GameState.h" />
+    <ClInclude Include="client\src\core\gameStates\MainMenuState.h" />
+    <ClInclude Include="client\src\entities\Bullet.h" />
+    <ClInclude Include="client\src\entities\Entity.h" />
+    <ClInclude Include="client\src\entities\Player.h" />
     <ClInclude Include="client\src\network\NetworkClient.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="client\src\core\Game.cpp" />
+    <ClCompile Include="client\src\core\gameStates\GameplayState.cpp" />
+    <ClCompile Include="client\src\core\gameStates\MainMenuState.cpp" />
+    <ClCompile Include="client\src\entities\Bullet.cpp" />
+    <ClCompile Include="client\src\entities\Player.cpp" />
     <ClCompile Include="client\src\main.cpp" />
     <ClCompile Include="client\src\network\NetworkClient.cpp" />
   </ItemGroup>

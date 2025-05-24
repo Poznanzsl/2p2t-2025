@@ -70,15 +70,21 @@ void Server::ProcessEvent(ENetEvent& event) {
 
             Player player = m_ConnectedPlayers[event.peer];
             m_ConnectedPlayers.erase(event.peer);
-            if (player.connectedRoomID.has_value() && m_Rooms[player.connectedRoomID.value()].host.ID == player.ID) {
-                int roomID = player.connectedRoomID.value();
+            if (!player.connectedRoomID.has_value()) {
+                break;
+            } 
 
+            int roomID = player.connectedRoomID.value();
+            if (m_Rooms[roomID].host.ID == player.ID) {
                 if (m_Rooms[roomID].other.has_value()) {
                     m_Rooms[roomID].host = m_Rooms[roomID].other.value();
                 }
                 else {
                     m_Rooms.erase(roomID);
                 }
+            }
+            else {
+                m_Rooms[roomID].other = std::nullopt;
             }
             break;
         }

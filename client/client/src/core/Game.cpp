@@ -1,16 +1,18 @@
 #include "Game.h"
 
+Game::Game()
+	:m_Window(sf::RenderWindow(sf::VideoMode({ 1200, 800 }), "test")){}
+
 void Game::Run(){
 	Init();
 
 	// Game loop
 	while (m_Running) {
+		float dt = m_Clock.restart().asSeconds();
 		HandleEvents();
-		Update();
+		Update(dt);
 		Render();
 	}
-
-	Shutdown();
 }
 
 void Game::Init(){
@@ -23,27 +25,44 @@ void Game::Init(){
 			std::cout << "Room created with code: " << m_Room.value() << std::endl;
 		}	
 	}
-
-	m_Window = std::make_unique<sf::RenderWindow>(sf::VideoMode({ 1200, 800 }), "test");
-	m_Texture = std::make_unique<sf::Texture>("assets/cat.jpg");
-	m_Sprite = std::make_unique<sf::Sprite>(*m_Texture);
 	
-	m_CurrentState = GameState::MainMenu;
+	ChangeGameState(GameStateEnum::Playing);
 	m_Running = true;
 }
 
-void Game::Shutdown(){
+void Game::ChangeGameState(GameStateEnum state) {
+	if (m_CurrentStateEnum == state) return;
+
+	if (m_CurrentState) {
+		m_CurrentState->Exit(); 
+	}
+
+	switch (state) {
+	case GameStateEnum::Playing:
+		m_CurrentState = std::make_unique<GameplayState>();
+		break;
+	}
+	//etc
+
+	m_CurrentState->Init(); 
+	m_CurrentStateEnum = state;
 }
 
 void Game::HandleEvents(){
+	while (const std::optional<sf::Event> e = m_Window.pollEvent()) {
+		if (e->is<sf::Event::Closed>()) {
+			m_Window.close();
+			m_Running = false;
+		}
+	}
+	m_CurrentState->HandleEvents(m_Window);
 }
 
-void Game::Update(){
+void Game::Update(float dt){
 	m_NetworkClient.ReceiveData();
+	m_CurrentState->Update(dt, m_Window);
 }
 
 void Game::Render(){
-	m_Window->clear();
-	m_Window->draw(*m_Sprite);
-	m_Window->display();
+	m_CurrentState->Render(m_Window);
 }
