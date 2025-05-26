@@ -1,4 +1,5 @@
 #include "./headers/player.h"
+#include <iostream>
 
 void Player::move(Direction direction) {
 	switch (direction) {

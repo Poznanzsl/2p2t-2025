@@ -1,4 +1,3 @@
-raylib-master
 _build
 _bin
 .vs
@@ -9,4 +8,3 @@ obj
 *.vcxproj
 *.filters
 *.user
-/*.sln

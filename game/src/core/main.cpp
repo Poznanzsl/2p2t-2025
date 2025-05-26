@@ -2,20 +2,20 @@
 #include "raylib.h"
 #include "raymath.h"
 
-#include "game.h"   // an external header in this project
-#include "lib.h"	// an external header in the static lib project
+#include "lib.h"
 
 #include "headers/entity.h"
 #include "headers/player.h"
 #include "headers/renderer.h"
 #include "headers/inputHandler.h"
+#include "headers/map.h"
+#include "headers/constants.h"
 
 void GameInit()
 {
     SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_RESIZABLE);
     InitWindow(InitialWidth, InitialHeight, "Example");
     SetTargetFPS(144);
-
 }
 
 void GameCleanup()
@@ -34,8 +34,16 @@ void gameLoop(Render* render, EntityHandler* entityHandler, InputHandler* inputH
 int main()
 {
     GameInit();
+
     EntityHandler entityHandler;
+
+    Map map;
+    std::cout << GetWorkingDirectory() << '\n';
+    map.fieldMap = map.mapToVector("game/src/images/map/mapCollision.png");
+    map.showMap(map.fieldMap);
+
     Player player(Position(1, 1), 100, Type::PLAYER);
+
     InputHandler inputHandler(&player);
 
     Camera2D cam = { 0 };

@@ -12,8 +12,6 @@ class Player : public Entity {
 public:
 
 	Player(Position pos, int health, Type type) : Entity(pos, health, type) {
-
-		
 	}
 
 	void jump();
