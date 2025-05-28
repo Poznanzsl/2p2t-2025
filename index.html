@@ -1,228 +1,90 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <title>Flappy Bird - Gra</title>
+  <meta charset="UTF-8">
+  <title>Minigry</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      text-align: center;
-      font-family: Arial, sans-serif;
-      background-color: #0e0914;
-      overflow: hidden;
-    }
-
-    h1 {
-      margin-top: 20px;
-      color: #ffffff;
-      text-shadow: 2px 2px #000;
-    }
-
-    canvas {
-      background-color: #70c5ce;
-      border: 3px solid #333;
-      margin: 10px auto;
-      display: block;
-      width: 100%;
-      height: auto;
-      max-width: 550px;
-    }
-
-    #OknaPrzeg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(27, 27, 27, 0.7);
-      display: none;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(145deg, #e0eafc, #cfdef3);
+      display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 10;
+      height: 100vh;
     }
 
-    #Kontener {
-      background-color: white;
-      padding: 30px;
-      border-radius: 10px;
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      padding: 20px;
+    }
+
+    .game-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
-      font-size: 1.5em;
+      background: white;
+      border: none;
+      border-radius: 24px;
+      padding: 20px;
+      width: 240px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+      text-decoration: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    #Zaciemnienie {
-      position: fixed;
-      top: 0;
-      left: 0;
+    .game-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .game-button img {
       width: 100%;
-      height: 100%;
-      background: black;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.5s ease;
-      z-index: 9;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 2px solid #ccc;
+    }
+
+    .game-title {
+      margin-top: 16px;
+      font-size: 22px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    @media (max-width: 800px) {
+      .game-button {
+        width: 80vw;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Flappy Bird</h1>
-  <canvas id="Plansza" width="500" height="650"></canvas>
-  <div id="Zaciemnienie"></div>
-  <div id="OknaPrzeg">
-    <div id="Kontener">
-      <h2>Koniec gry!</h2>
-      <p>Twój wynik: <span id="wynik"></span></p>
-      <button onclick="startGry()">Zagraj ponownie</button>
-    </div>
+
+  <div class="menu">
+    <a class="game-button" href="saper.html">
+      <img src="saperStartMenuImage.png" alt="Saper">
+      <div class="game-title">Saper</div>
+    </a>
+    <a class="game-button" href="flappy.html">
+      <img src="flappy.png" alt="Flappy Bird">
+      <div class="game-title">Flappy Bird</div>
+    </a>
+    <a class="game-button" href="#">
+      <img src="snake.jpg" alt="Snake">
+      <div class="game-title">Snake</div>
+    </a>
   </div>
 
-  <script>
-    const plansza = document.getElementById("Plansza");
-    const kontekst = plansza.getContext("2d");
-
-    const PROMIEN_PTAKA = 25;
-    const SZEROKOSC_PRZESZKODY = 60;
-    const ODSTEP = 165;
-    const PREDKOSC_PRZESZKODY = 1.6;
-    const GRAWITACJA = 0.1;
-
-    let ptak = { x: 50, y: plansza.height / 2, predkosc: 0 };
-    let przeszkody = [];
-    let wynik = 0;
-    let graAktywna = true;
-    let idAnimacji = null;
-
-    const obrazPtaka = new Image();
-    obrazPtaka.src = "bird.png";
-
-    const ruraGlowka = new Image();
-    ruraGlowka.src = "pipeUp.png";
-
-    const ruraCialo = new Image();
-    ruraCialo.src = "pipeDown.png";
-
-    const tloObraz = new Image();
-    tloObraz.src = "FlappyBg.gif";
-
-    function dodajPrzeszkode() {
-      przeszkody.push({
-        x: plansza.width,
-        wysokosc: Math.random() * (plansza.height - ODSTEP - 100) + 50,
-      });
-    }
-
-    function skok() {
-      if (!graAktywna) return;
-      ptak.predkosc = -4.2;
-    }
-
-    document.addEventListener("keydown", e => {
-      if (e.code === "Space") skok();
-    });
-
-    document.addEventListener("click", skok);
-
-    function rysujRure(x, y, odwrocona) {
-      const wysokoscGlowy = 30;
-      const szerokoscGlowy = SZEROKOSC_PRZESZKODY + 15;
-      const wysokoscCiala = odwrocona ? y - wysokoscGlowy : plansza.height - y - wysokoscGlowy;
-      if (wysokoscCiala <= 0) return;
-
-      if (odwrocona) {
-        kontekst.save();
-        kontekst.translate(x + SZEROKOSC_PRZESZKODY / 2, y);
-        kontekst.rotate(Math.PI);
-        kontekst.drawImage(ruraGlowka, -szerokoscGlowy / 2, 0, szerokoscGlowy, wysokoscGlowy);
-        kontekst.drawImage(ruraCialo, -SZEROKOSC_PRZESZKODY / 2, wysokoscGlowy, SZEROKOSC_PRZESZKODY, wysokoscCiala);
-        kontekst.restore();
-      } else {
-        kontekst.drawImage(ruraCialo, x, y + wysokoscGlowy, SZEROKOSC_PRZESZKODY, wysokoscCiala);
-        kontekst.drawImage(ruraGlowka, x - 7.5, y, szerokoscGlowy, wysokoscGlowy);
-      }
-    }
-
-    function sprawdzKolizje(przeszkoda) {
-      const rozszerzenieGlowy = 7.5;
-      const kolizjaGora = ptak.x + PROMIEN_PTAKA > przeszkoda.x - rozszerzenieGlowy &&
-                         ptak.x - PROMIEN_PTAKA < przeszkoda.x + SZEROKOSC_PRZESZKODY + rozszerzenieGlowy &&
-                         ptak.y - PROMIEN_PTAKA < przeszkoda.wysokosc;
-
-      const kolizjaDol = ptak.x + PROMIEN_PTAKA > przeszkoda.x - rozszerzenieGlowy &&
-                        ptak.x - PROMIEN_PTAKA < przeszkoda.x + SZEROKOSC_PRZESZKODY + rozszerzenieGlowy &&
-                        ptak.y + PROMIEN_PTAKA > przeszkoda.wysokosc + ODSTEP;
-
-      return kolizjaGora || kolizjaDol;
-    }
-
-    function aktualizujGre() {
-      kontekst.clearRect(0, 0, plansza.width, plansza.height);
-      kontekst.drawImage(tloObraz, 0, 0, plansza.width, plansza.height);
-
-      przeszkody.forEach((prz, i) => {
-        rysujRure(prz.x, prz.wysokosc, true);
-        rysujRure(prz.x, prz.wysokosc + ODSTEP, false);
-
-        if (graAktywna) prz.x -= PREDKOSC_PRZESZKODY;
-
-        if (sprawdzKolizje(prz)) return Zresetuj();
-
-        if (prz.x + SZEROKOSC_PRZESZKODY < 0) {
-          przeszkody.splice(i, 1);
-          wynik++;
-        }
-      });
-
-      if (przeszkody.length === 0 || przeszkody[przeszkody.length - 1].x < plansza.width - 350) {
-        dodajPrzeszkode();
-      }
-
-      kontekst.drawImage(obrazPtaka, ptak.x - PROMIEN_PTAKA, ptak.y - PROMIEN_PTAKA, PROMIEN_PTAKA * 2, PROMIEN_PTAKA * 2);
-
-      kontekst.font = "40px Arial";
-      kontekst.lineWidth = 3;
-      kontekst.strokeStyle = "Black";
-      const text = wynik.toString();
-      const textWidth = kontekst.measureText(text).width;
-      const textX = (plansza.width - textWidth) / 2;
-      kontekst.strokeText(text, textX, 60);
-      kontekst.fillStyle = "#276864";
-      kontekst.fillText(text, textX, 60);
-
-      ptak.predkosc += GRAWITACJA;
-      ptak.y += ptak.predkosc;
-
-      if (ptak.y + PROMIEN_PTAKA > plansza.height || ptak.y - PROMIEN_PTAKA < 0) {
-        Zresetuj();
-        return;
-      }
-
-      idAnimacji = requestAnimationFrame(aktualizujGre);
-    }
-
-    function Zresetuj() {
-      if (!graAktywna) return;
-      graAktywna = false;
-      const zaciemnienie = document.getElementById("Zaciemnienie");
-      zaciemnienie.style.opacity = 1;
-
-      setTimeout(() => {
-        document.getElementById("wynik").textContent = wynik;
-        document.getElementById("OknaPrzeg").style.display = "flex";
-        zaciemnienie.style.opacity = 0;
-      }, 300);
-    }
-
-    function startGry() {
-      cancelAnimationFrame(idAnimacji);
-      document.getElementById("OknaPrzeg").style.display = "none";
-      ptak = { x: 50, y: plansza.height / 2, predkosc: 0 };
-      przeszkody = [];
-      wynik = 0;
-      graAktywna = true;
-      dodajPrzeszkode();
-      aktualizujGre();
-    }
-
-    startGry();
-  </script>
 </body>
 </html>
