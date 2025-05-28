@@ -100,7 +100,7 @@ function postawFlage(e) {
   }
 
   // Обновляем отображение количества оставшихся мин
-  licznikMin.textContent = `Мин: ${liczbaFlag}`;
+  licznikMin.textContent = `Miny: ${liczbaFlag}`;
 }
 
 function rozmiescMiny(indexZakazany) {
