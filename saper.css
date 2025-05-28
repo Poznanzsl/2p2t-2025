@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  #plansza {
+    display: grid;
+    grid-template-columns: repeat(10, 40px); /* 10 kolumn, po 40px */
+    gap: 2px;
+    margin: 20px auto;
+    width: max-content;
+  }
+  
+  .pole {
+    width: 40px;
+    height: 40px;
+    background-color: #ddd;
+    border: 1px solid #999;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .pole.odkryte {
+    background-color: #eee;
+  }
+  
+  .pole.odkryte[data-liczba='1'] { color: blue; }
+  .pole.odkryte[data-liczba='2'] { color: green; }
+  .pole.odkryte[data-liczba='3'] { color: red; }
+
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  #licznikMin {
+    font-size: 20px;
+    margin: 10px;
+  }
+  
