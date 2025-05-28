@@ -81,9 +81,9 @@
 
     const PROMIEN_PTAKA = 25;
     const SZEROKOSC_PRZESZKODY = 60;
-    const ODSTEP = 165;
-    const PREDKOSC_PRZESZKODY = 1.6;
-    const GRAWITACJA = 0.1;
+    const ODSTEP = 160;
+    const PREDKOSC_PRZESZKODY = 3.8;
+    const GRAWITACJA = 0.25
 
     let ptak = { x: 50, y: plansza.height / 2, predkosc: 0 };
     let przeszkody = [];
@@ -112,7 +112,7 @@
 
     function skok() {
       if (!graAktywna) return;
-      ptak.predkosc = -4.2;
+      ptak.predkosc = -6;
     }
 
     document.addEventListener("keydown", e => {
