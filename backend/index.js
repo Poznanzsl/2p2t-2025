@@ -19,7 +19,7 @@ app.get('/api', async (req, res) => {
     const query ={
       contents:[
         {
-          parts:[{text:"output yes"}]
+          parts:[{text:'generate ONE recipie in format be creative but dont change format dont add anythink else!: {"id": must be 0,"name": ,"time": ,"type": }'} ]
         }
       ]
     }

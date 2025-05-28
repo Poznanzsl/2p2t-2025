@@ -9,6 +9,25 @@ import NavigationBar from '../../NavigationBar/NavigationBar';
 export default function AiScreen() {
 
   async function generateRecipe(){
+   let respond = await fetch("https://maniowy.lm.r.appspot.com/api");
+   respond = await respond.json();
+      
+   // const cleanResponse = respond.data.substring(8,respond.data.length - 5 );
+
+    const cleanResponse = respond.data;
+    let recipe;
+    do{
+      try{
+      recipe = JSON.parse(cleanResponse);
+      }
+      catch{
+        console.log("error");
+      }
+
+    }while( recipe == undefined)
+
+    console.log(recipe);
+
 
  }                           
 
