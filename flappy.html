@@ -129,7 +129,8 @@
     let ptak = { x: 50, y: plansza.height / 2, predkosc: 0 };
     let przeszkody = [];
     let wynik = 0;
-    let graAktywna = true;
+    let graAktywna = false;
+    let graRozpoczeta = false;
     let idAnimacji = null;
 
     const obrazPtaka = new Image();
@@ -151,16 +152,32 @@
       });
     }
 
-    function skok() {
-      if (!graAktywna) return;
-      ptak.predkosc = -6;
+    function rysujStartowyEkran() {
+      kontekst.drawImage(tloObraz, 0, 0, plansza.width, plansza.height);
+      kontekst.fillStyle = "rgba(0, 0, 0, 0.6)";
+      kontekst.fillRect(0, 0, plansza.width, plansza.height);
+
+      kontekst.fillStyle = "#ffffff";
+      kontekst.font = "30px Cabin";
+      kontekst.textAlign = "center";
+      kontekst.fillText("Kliknij lub naciśnij spację,", plansza.width / 2, plansza.height / 2 - 20);
+      kontekst.fillText("aby rozpocząć grę", plansza.width / 2, plansza.height / 2 + 20);
+    }
+
+    function Rozpoczniigre() {
+      if (!graRozpoczeta) {
+        graRozpoczeta = true;
+        startGry();
+      } else if (graAktywna) {
+        ptak.predkosc = -6;
+      }
     }
 
     document.addEventListener("keydown", e => {
-      if (e.code === "Space") skok();
+      if (e.code === "Space") Rozpoczniigre();
     });
 
-    document.addEventListener("click", skok);
+    document.addEventListener("click", Rozpoczniigre);
 
     function rysujRure(x, y, odwrocona) {
       const wysokoscGlowy = 30;
@@ -263,7 +280,9 @@
       aktualizujGre();
     }
 
-    startGry();
+    tloObraz.onload = () => {
+      rysujStartowyEkran();
+    };
   </script>
 </body>
 </html>
