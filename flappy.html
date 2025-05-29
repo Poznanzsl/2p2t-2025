@@ -279,7 +279,20 @@
       dodajPrzeszkode();
       aktualizujGre();
     }
+    document.addEventListener("keydown", e => {
+        if (e.code === "Space") {
+         const okno = document.getElementById("OknaPrzeg");
 
+       if (okno.style.display === "flex") {
+         document.querySelector("#Kontener button").click();
+       } else if (!graRozpoczeta) {
+         graRozpoczeta = true;
+         startGry();
+       } else if (graAktywna) {
+      ptak.predkosc = -6;
+    }
+  }
+});
     tloObraz.onload = () => {
       rysujStartowyEkran();
     };
