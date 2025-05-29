@@ -2,6 +2,8 @@
 #include "menu.h"
 #include "ui_utils.h"
 #include <math.h> // dla sin()
+#include "settings.h"
+using namespace GameConfig;
 
 void ShowMenu() {
     const int screenWidth = 600;
@@ -98,5 +100,7 @@ void ShowMenu() {
     }
     else if (menuOption == 2) {
         TraceLog(LOG_INFO, "Ustawienia!");
+        ShowSettingsMenu();
+        ShowMenu(); // po powrocie z ustawień, znów pokaż menu
     }
 }
