@@ -29,7 +29,6 @@ export default function AiScreen() {
       }
       catch{
         console.log("error");
-        break;
       }
 
     }while( recipe == undefined)
@@ -44,7 +43,6 @@ export default function AiScreen() {
     <>
       {!isThereRecipe &&  (
        <View style={styles.container}>
-        <Text>ai tworzy przepisy</Text>
         <Pressable style = {styles.button} onPress={() => generateRecipe()}> 
           <Text>generuj</Text> 
         </Pressable>
@@ -53,10 +51,11 @@ export default function AiScreen() {
       </View>)}
 
 
-r
       {isThereRecipe &&
         <View style={styles.container}>
-          <RecipeCard key = {0} id = {recipeData.id} name ={recipeData.name}  time ={recipeData.time} /> 
+
+          <Text style ={styles.header}>{recipeData.name}</Text>
+          <Text style={styles.time}>• czas : {recipeData.time}min</Text>
 
           <Pressable style = {styles.button} onPress={generateRecipe}> 
             <Text>generuj</Text> 

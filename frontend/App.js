@@ -8,7 +8,7 @@ import FindRecipesScreen from "./Screens/FindRecipes/FindRecipesScreen";
 import FavoriteRecipesScreen from "./Screens/FavoriteRecipes/FavoriteRecipesScreen";
 import RecipeScreen from "./Screens/Recipe/RecipeScreen";
 import CategorySreen from "./Screens/CategoryScreen/CategoryScreen";
-import AiScreen from "./Screens/AiScreen/AiScreen";
+import AiScreen from "./Screens/AiScreen/AiScreen.js"
 
 import { Colors } from "./assets/cssVariables";
 
