@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Tosty bruschetta",
+    "time": 15,
+    "type": "Włoskie",
+    "skladniki" : "\n 4 kromki chleba typu ciabatta lub bagietki\n 2 dojrzałe pomidory\n 1 kulka mozzarelli\n 1 ząbek czosnku\n Kilka listków świeżej bazylii\n Oliwa z oliwek extra virgin\n Sól i pieprz",
+    "opis": "\nPomidory sparz, obierz ze skórki i pokrój w drobną kostkę. Dopraw solą i pieprzem. Mozzarellę pokrój w plastry. Kromki chleba opiecz na suchej patelni lub w tosterze. Natrzyj grzanki przekrojonym ząbkiem czosnku. Na każdej kromce ułóż pomidory, plaster mozzarelli i liść bazylii. Skrop oliwą i podawaj od razu.",
+    "foto": "tostyZBruschetta"
+  },
+  {
+    "id": 2,
+    "name": "Kotlet schabowy z ziemniakami i mizerią",
+    "time": 45,
+    "type": "Polskie",
+    "skladniki" : "\n 4 kotlety schabowe,\n 2 jajka,\n 4 łyżki bułki tartej,\n 4 łyżki mąki pszennej,\n sól,\n pieprz,\n olej do smażenia,\n 1 kg ziemniaków,\n 1 łyżeczka masła,\n 2 ogórki gruntowe,\n 200 ml kwaśnej śmietany 18%,\n szczypta cukru,\n 1 łyżeczka octu,\n szczypiorek",
+    "opis": "\n Schab rozbij tłuczkiem, dopraw solą i pieprzem. Obtocz w mące, jajku i bułce tartej. Smaż na rozgrzanym oleju z obu stron na złoty kolor. Ziemniaki obierz, ugotuj w osolonej wodzie i rozgnieć z masłem. Ogórki pokrój w cienkie plasterki, wymieszaj ze śmietaną, octem, cukrem i szczypiorkiem. Podawaj kotlety z ziemniakami i mizerią.",
+    "foto": "kotletSchabowy"
+  },
+    {
+    "id": 3,
+    "name": "Makaron z pesto",
+    "time": 15,
+    "type": "Włoskie",
+    "skladniki" : "\n 200g makaronu,\n 3 łyżki pesto,\n Parmezan,\n Sól",
+    "opis": "\nUgotuj makaron al dente. W międzyczasie podgrzej pesto w rondelku. Po ugotowaniu makaronu, odcedź go i wymieszaj z pesto. Posyp startym parmezanem.",
+    "foto": "makaronZPesto"
+  },
+  {
+    "id": 4,
+    "name": "Omlet z warzywami",
+    "time": 10,
+    "type": "Śniadanie",
+    "skladniki" : "\n 2 jajka,\n 1/2 papryki,\n 1/4 cebuli,\n Sól,\n Pieprz,\n masło/olej do smażenia",
+    "opis": "\nJajka roztrzep w misce, dodaj pokrojone w kostkę warzywa. Rozgrzej patelnię, dodaj masło, a następnie wlej jajka. Smaż przez 3-5 minut na średnim ogniu, aż omlet się zetnie. Podawaj na ciepło.",
+    "foto": "omletZWarzywami"
+  },
+  {
+    "id": 5,
+    "name": "Sałatka caprese",
+    "time": 5,
+    "type": "Przystawki",
+    "skladniki" : "\n 2 pomidory,\n 100 g mozzarelli,\n Kilka listków bazylii,\n Oliwa z oliwek,\n Sól,\n Pieprz",
+    "opis": "\nPokrój pomidory i mozzarellę na plastry, układaj na talerzu na przemian. Posyp bazylią, polej oliwą, dopraw solą i pieprzem.",
+    "foto": "salatkaCaprese"
+  },
+  {
+    "id": 6,
+    "name": "Smoothie z banana i truskawek",
+    "time": 5,
+    "type": "Szybkie",
+    "skladniki" : "\n 1 banan,\n 100g truskawek,\n 200ml jogurtu,\n 1 łyżka miodu",
+    "opis": "\nWszystkie składniki wrzuć do blendera i zmiksuj na gładką masę. Podawaj schłodzone.",
+    "foto": "smoothie"
+  },
+  {
+    "id": 7,
+    "name": "Gulasz z kaszą gryczaną",
+    "time": 60,
+    "type": "Polskie",
+    "skladniki" : "\n 600 g łopatki wieprzowej,\n 1 duża cebula,\n 2 ząbki czosnku,\n 1 marchewka,\n 2 łyżki koncentratu pomidorowego,\n 1 łyżeczka słodkiej papryki,\n 1/2 łyżeczki ostrej papryki,\n 500 ml bulionu,\n sól,\n pieprz,\n 2 łyżki oleju,\n 1 szklanka kaszy gryczanej",
+    "opis": "\n Mięso pokrój w kostkę i obsmaż na oleju. Dodaj pokrojoną cebulę, czosnek i startą marchewkę, smaż kilka minut. Dodaj koncentrat pomidorowy i przyprawy, wymieszaj. Wlej bulion i duś na małym ogniu pod przykryciem przez około 45 minut aż mięso będzie miękkie. W międzyczasie ugotuj kaszę gryczaną według instrukcji na opakowaniu. Podawaj gulasz z kaszą i ulubioną surówką.",
+    "foto" : "gulasz"
+  },
+  {
+    "id": 8,
+    "name": "Chili con carne z ryżem",
+    "time": 50,
+    "type": "Obiad",
+    "skladniki" : "\n 500 g mielonej wołowiny,\n 1 duża cebula,\n 2 ząbki czosnku,\n 1 czerwona papryka,\n 400 g krojonych pomidorów z puszki,\n 1 puszka czerwonej fasoli,\n 1 łyżka koncentratu pomidorowego,\n 1 łyżeczka kuminu,\n 1 łyżeczka słodkiej papryki,\n 1/2 łyżeczki ostrej papryki,\n sól,\n pieprz,\n 2 łyżki oleju,\n 150 g ryżu",
+    "opis": "\n Na oleju zeszklij cebulę i czosnek, dodaj mięso i smaż do zarumienienia. Dodaj pokrojoną paprykę, przyprawy, koncentrat i pomidory, dokładnie wymieszaj. Duś na małym ogniu przez 30 minut. Dodaj odsączoną fasolę i gotuj jeszcze 10 minut. W międzyczasie ugotuj ryż według instrukcji. Podawaj chili con carne z porcją ryżu, opcjonalnie posyp świeżą kolendrą.",
+    "foto" : "chiliConCarne"
+  }
+]

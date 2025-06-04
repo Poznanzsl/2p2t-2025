@@ -1,0 +1,30 @@
+{
+  "name": "2p2t-2025",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@google-cloud/secret-manager": "^6.0.1",
+    "@google/genai": "^0.15.0",
+    "@react-navigation/native": "^7.1.8",
+    "@react-navigation/native-stack": "^7.3.12",
+    "expo": "^53.0.9",
+    "expo-navigation-bar": "~4.2.4",
+    "expo-secure-store": "~14.2.3",
+    "expo-status-bar": "~2.2.3",
+    "prop-types": "^15.8.1",
+    "react": "19.0.0",
+    "react-native": "0.79.2",
+    "react-native-safe-area-context": "5.4.0",
+    "react-native-screens": "~4.10.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0"
+  },
+  "private": true
+}
