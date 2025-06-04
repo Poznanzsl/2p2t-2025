@@ -7,6 +7,9 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{E9C7FDCE-D52A-8D73-7EB0-C5296AF258F6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\font">
+      <UniqueIdentifier>{e3192852-82ce-4647-ac15-6e0b9e15b56c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header.h">
@@ -19,6 +22,21 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="settings.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="grid.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="block.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="colors.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="position.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,5 +53,28 @@
     <ClCompile Include="settings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="position.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="grid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="colors.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blocks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="block.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\..\..\..\OneDrive\Pulpit\tetris\font\monogram.ttf">
+      <Filter>Source Files\font</Filter>
+    </Font>
   </ItemGroup>
 </Project>

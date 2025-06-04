@@ -168,14 +168,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="block.h" />
+    <ClInclude Include="colors.h" />
+    <ClInclude Include="game.h" />
+    <ClInclude Include="grid.h" />
     <ClInclude Include="header.h" />
     <ClInclude Include="menu.h" />
+    <ClInclude Include="position.h" />
     <ClInclude Include="settings.h" />
     <ClInclude Include="ui_utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="block.cpp" />
+    <ClCompile Include="blocks.cpp" />
+    <ClCompile Include="colors.cpp" />
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="grid.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu.cpp" />
+    <ClCompile Include="position.cpp" />
     <ClCompile Include="settings.cpp" />
     <ClCompile Include="ui_utils.cpp" />
   </ItemGroup>
@@ -183,6 +194,9 @@
     <ProjectReference Include="raylib.vcxproj">
       <Project>{8898EA18-743A-15EF-5DF5-284349369C3F}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\..\..\..\OneDrive\Pulpit\tetris\font\monogram.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

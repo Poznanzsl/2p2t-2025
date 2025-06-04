@@ -1,6 +1,7 @@
 #include "menu.h"
 #include "raylib.h"
 #include "settings.h"
+#include "game.h"
 using namespace GameConfig;
 
 
@@ -11,16 +12,19 @@ int main() {
     TraceLog(LOG_INFO, TextFormat("Trudnosc: %d", static_cast<int>(settings.difficulty)));
     TraceLog(LOG_INFO, settings.soundEnabled ? "Dzwiek wlaczony" : "Dzwiek wylaczony");
 
-    const int screenWidth = 800;
-    const int screenHeight = 600;
-
+    const int screenWidth = 500;
+    const int screenHeight = 620;
+    
     InitWindow(screenWidth, screenHeight, "Tetris - Gra");
 
+    Game game = Game();
+
+    SetTargetFPS(60);
     while (!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(RAYWHITE);
 
-        DrawText("Tetris startuje tutaj...", 250, 300, 20, DARKGREEN);
+        game.Run();
 
         EndDrawing();
     }

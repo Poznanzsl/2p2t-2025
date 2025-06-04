@@ -1,25 +1,13 @@
 ﻿  raudio.c
   rcore.c
+C:\Users\Kozlo\source\repos\2p2t-2025\raylib-master\src\external\jar_xm.h(242,9): warning C4005: 'DEBUG': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(60,9): warning C4005: 'MAX_PATH': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,9): warning C4005: 'APIENTRY': macro redefinition
   rglfw.c
-C:\Users\Michał\source\repos\2p2t-2025\raylib-master\src\external\jar_xm.h(242,9): warning C4005: "DEBUG": ponowna definicja makra
-  (kompilowanie pliku źródłowego „../raylib-master/src/raudio.c”)
-      C:\Users\Michał\source\repos\2p2t-2025\raylib-master\src\external\jar_xm.h(242,9):
-      Element „DEBUG“ został wcześniej zadeklarowany w wierszu polecenia
-  
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared\minwindef.h(60,9): warning C4005: "MAX_PATH": ponowna definicja makra
-  (kompilowanie pliku źródłowego „../raylib-master/src/rcore.c”)
-      C:\Users\Michał\source\repos\2p2t-2025\raylib-master\src\rcore.c(166,17):
-      zobacz poprzednią definicję „MAX_PATH”
-  
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared\minwindef.h(130,9): warning C4005: "APIENTRY": ponowna definicja makra
-  (kompilowanie pliku źródłowego „../raylib-master/src/rcore.c”)
-      C:\Users\Michał\source\repos\2p2t-2025\raylib-master\src\external\glfw\include\GLFW\glfw3.h(123,11):
-      zobacz poprzednią definicję „APIENTRY”
-  
   rmodels.c
   rshapes.c
   rtext.c
   rtextures.c
   utils.c
-  Generowanie kodu...
-  raylib.vcxproj -> C:\Users\Michał\source\repos\2p2t-2025\bin\Debug\raylib.lib
+  Generating Code...
+  raylib.vcxproj -> C:\Users\Kozlo\source\repos\2p2t-2025\bin\Debug\raylib.lib
