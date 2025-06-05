@@ -8,10 +8,21 @@
 </head>
 <body>
   <h1>Saper</h1>
-  
+  <a href="index.html" id="powrot">⟵ Powrót</a>
+
   <div id="licznikMin">Miny: 15</div>
   <div id="plansza"></div>
-  <button onclick="nowaGra()">Nowa Gra</button>
+  <button onclick="nowaGra()" class="nowa_gra">Nowa Gra</button>
+
+
+  <div id="menuPrzegrana" class="menu-ukryte">
+    <h2>💥 Przegrałeś!</h2>
+    <button onclick="nowaGra()">Zagraj ponownie</button>
+    <a href="index.html" class="link-bez-podkreslenia">
+  <button>Powrót do menu</button>
+</a>
+
+  </div>
 
   <script src="saper.js"></script>
 </body>

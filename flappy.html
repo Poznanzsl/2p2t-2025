@@ -28,6 +28,24 @@
       max-width: 550px;
     }
 
+    #powrot {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      text-decoration: none;
+      background-color: #eee;
+      padding: 8px 12px;
+      border-radius: 8px;
+      color: #000;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      transition: background-color 0.2s;
+    }
+
+    #powrot:hover {
+      background-color: #ddd;
+    }
+
     #Zaciemnienie {
       position: fixed;
       top: 0;
@@ -84,6 +102,7 @@
       font-size: 1em;
       border-radius: 10px;
       cursor: pointer;
+      margin: 10px 8px;
       transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
@@ -107,12 +126,15 @@
   <h1>Flappy Bird</h1>
   <canvas id="Plansza" width="500" height="650"></canvas>
   <div id="Zaciemnienie"></div>
-
+  <a href="index.html" id="powrot">⟵ Powrót</a>
   <div id="OknaPrzeg">
     <div id="Kontener">
       <h2>Koniec gry!</h2>
       <p>Twój wynik: <span id="wynik"></span></p>
-      <button onclick="startGry()">Zagraj ponownie</button>
+      <div style="display: flex;flex-direction: column;">
+          <button onclick="startGry()">Zagraj ponownie</button>
+          <button onclick="window.location.href='index.html'">Powrót do menu</button>
+        </div>
     </div>
   </div>
 
@@ -279,20 +301,22 @@
       dodajPrzeszkode();
       aktualizujGre();
     }
-    document.addEventListener("keydown", e => {
-        if (e.code === "Space") {
-         const okno = document.getElementById("OknaPrzeg");
 
-       if (okno.style.display === "flex") {
-         document.querySelector("#Kontener button").click();
-       } else if (!graRozpoczeta) {
-         graRozpoczeta = true;
-         startGry();
-       } else if (graAktywna) {
-      ptak.predkosc = -6;
-    }
-  }
-});
+    document.addEventListener("keydown", e => {
+      if (e.code === "Space") {
+        const okno = document.getElementById("OknaPrzeg");
+
+        if (okno.style.display === "flex") {
+          document.querySelector("#Kontener button").click();
+        } else if (!graRozpoczeta) {
+          graRozpoczeta = true;
+          startGry();
+        } else if (graAktywna) {
+          ptak.predkosc = -6;
+        }
+      }
+    });
+
     tloObraz.onload = () => {
       rysujStartowyEkran();
     };

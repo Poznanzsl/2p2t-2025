@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu Snake</title>
+    <style>
+        body {
+            background-color: #000;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        a.button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #1e90ff;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        a.button:hover {
+            background-color: #63b3ed;
+            transform: scale(1.05);
+        }
+
+            #powrot {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  text-decoration: none;
+  background-color: #eee;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: #000;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: background-color 0.2s;
+}
+
+#powrot:hover {
+  background-color: #ddd;
+}
+    </style>
+</head>
+<body>
+    <a href="index.html" id="powrot">⟵ Powrót</a>
+    <div class="container">
+        <a href="snakeeasy.html" class="button">ŁATWY</a>
+        <a href="snakemid.html" class="button">ŚREDNI</a>
+        <a href="snakehard.html" class="button">TRUDNY</a>
+    </div>
+</body>
+</html>

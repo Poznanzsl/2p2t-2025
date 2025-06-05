@@ -1,11 +1,10 @@
-const rozmiar = 10;           // Размер поля (10x10)
-const liczbaMin = 15;         // Количество мин
+const rozmiar = 10;
+const liczbaMin = 15;
 let pola = [];
 let graSkonczona = false;
 let pierwszyKlik = true;
-let liczbaFlag = liczbaMin;   // Счётчик оставшихся флагов
+let liczbaFlag = liczbaMin;
 
-// Элемент для отображения оставшихся мин
 const licznikMin = document.getElementById("licznikMin");
 
 function rozpocznijGre() {
@@ -13,11 +12,10 @@ function rozpocznijGre() {
   plansza.innerHTML = "";
   graSkonczona = false;
   pierwszyKlik = true;
-  liczbaFlag = liczbaMin;   // Сброс флагов при новой игре
+  liczbaFlag = liczbaMin;
 
-  // Обновляем отображение количества оставшихся мин
+  document.getElementById("menuPrzegrana").classList.add("menu-ukryte");
   licznikMin.textContent = `Miny: ${liczbaFlag}`;
-
   pola = [];
 
   for (let i = 0; i < rozmiar * rozmiar; i++) {
@@ -71,7 +69,7 @@ function odkryjPole(index) {
     przegrana();
   } else if (pole.liczbaObok > 0) {
     pole.element.textContent = pole.liczbaObok;
-    pole.element.dataset.liczba = pole.liczbaObok; // Добавление числа в dataset для стилизации
+    pole.element.dataset.liczba = pole.liczbaObok;
   } else {
     pobierzSasiedzi(index).forEach(s => {
       const i = parseInt(s.element.dataset.index);
@@ -88,26 +86,25 @@ function postawFlage(e) {
   const pole = pola[index];
 
   if (pole.odkryte) return;
+  if (!pole.flaga && liczbaFlag === 0) return;
 
   pole.flaga = !pole.flaga;
 
   if (pole.flaga) {
     pole.element.textContent = "🚩";
-    liczbaFlag--;  // Уменьшаем количество оставшихся флагов
+    liczbaFlag--;
   } else {
     pole.element.textContent = "";
-    liczbaFlag++;  // Увеличиваем количество оставшихся флагов
+    liczbaFlag++;
   }
 
-  // Обновляем отображение количества оставшихся мин
   licznikMin.textContent = `Miny: ${liczbaFlag}`;
 }
 
 function rozmiescMiny(indexZakazany) {
   const zakazane = new Set([indexZakazany]);
   pobierzSasiedzi(indexZakazany).forEach(p => {
-    const i = parseInt(p.element.dataset.index);
-    zakazane.add(i);
+    zakazane.add(parseInt(p.element.dataset.index));
   });
 
   let miny = 0;
@@ -121,7 +118,7 @@ function rozmiescMiny(indexZakazany) {
 
   for (let i = 0; i < pola.length; i++) {
     const sasiedzi = pobierzSasiedzi(i);
-    pola[i].liczbaObok = sasiedzi.filter(p => p.mina).length; // Точное количество мин вокруг
+    pola[i].liczbaObok = sasiedzi.filter(p => p.mina).length;
   }
 }
 
@@ -146,13 +143,15 @@ function pobierzSasiedzi(index) {
 
 function przegrana() {
   graSkonczona = true;
-  alert("💥 Przegrałeś!");
+
   pola.forEach(p => {
     if (p.mina && !p.odkryte) {
       p.element.textContent = "💣";
       p.element.classList.add("mina");
     }
   });
+
+  document.getElementById("menuPrzegrana").classList.remove("menu-ukryte");
 }
 
 function sprawdzWygrana() {
@@ -164,7 +163,7 @@ function sprawdzWygrana() {
 }
 
 function nowaGra() {
-  rozpocznijGre();  // Запускаем новую игру
+  rozpocznijGre();
 }
 
 window.onload = rozpocznijGre;

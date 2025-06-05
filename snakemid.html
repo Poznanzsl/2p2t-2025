@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gra w Węża</title>
+<style>
+    body {
+        background-color: black;
+        text-align: center;
+        color: white;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        position: relative;
+    }
+
+    .kontener {
+        align-items: center;
+    }
+
+    #gameboard {
+        border: 5px solid white;
+        display: block;
+        margin: 20px auto;
+    }
+
+    #wynik {
+        font-size: 100px;
+        margin-top: 20px;
+    }
+
+    #powrot {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        text-decoration: none;
+        background-color: #eee;
+        padding: 8px 12px;
+        border-radius: 8px;
+        color: #000;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        transition: background-color 0.2s;
+    }
+
+    #powrot:hover {
+        background-color: #ddd;
+    }
+
+    #reset {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        height: 45px;
+        width: 150px;
+        border: 5px solid white;
+        border-radius: 25px;
+        color: white;
+        background-color: blue;
+        font-size: 20px;
+        cursor: pointer;
+        z-index: 2001;
+    }
+
+    .buttona {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 10px;
+        right: 200px;
+        height: 35px;
+        width: 150px;
+        border: 5px solid white;
+        border-radius: 25px;
+        color: white;
+        background-color: blue;
+        font-size: 20px;
+        cursor: pointer;
+        text-decoration: none;
+        z-index: 2001;
+    }
+
+    
+    #menuKoniec {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.85);
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        z-index: 1000;
+    }
+
+    #menuKoniec h2 {
+        font-size: 48px;
+        margin-bottom: 20px;
+    }
+
+    #menuKoniec p {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+
+    .przycisk-menu {
+        padding: 15px 40px;
+        margin: 10px;
+        font-size: 24px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: bold;
+        background-color: blue;
+        color: white;
+        transition: background-color 0.2s;
+    }
+
+    .przycisk-menu:hover {
+        background-color: darkblue;
+    }
+</style>
+</head>
+<body>
+
+<div class="kontener" style="position: relative;">
+    <a href="index.html" id="powrot">⟵ Powrót</a>
+    <br><br><br><br><br><br>
+    <canvas id="gameboard" width="510" height="510"></canvas>
+    <div id="wynik">0</div>
+    <button id="reset">RESET</button>
+    <a href="snake.html" class="buttona">POZIOMY</a>
+</div>
+
+
+<div id="menuKoniec">
+    <h2>Koniec gry!</h2>
+    <p>Twój wynik: <span id="finalnyWynik">0</span></p>
+    <button class="przycisk-menu" onclick="resetujGre()">Zagraj ponownie</button>
+    <a class="przycisk-menu" href="index.html" style="text-decoration: none;">Powrót do menu</a>
+</div>
+
+<script>
+const canvas = document.getElementById('gameboard');
+const ctx = canvas.getContext('2d');
+const rozmiar = 30;
+const wiersze = 17;
+const kolumny = 17;
+
+let snake = [{x: 8, y: 8}];
+let direction = {x: 1, y: 0};
+let nextDirection = {...direction};
+let wynik = 0;
+let gameInterval;
+let gameOver = false;
+let food = {x: 0, y: 0};
+
+function losujFood() {
+    let x, y, jestNaWeszu;
+    do {
+        x = Math.floor(Math.random() * kolumny);
+        y = Math.floor(Math.random() * wiersze);
+        jestNaWeszu = snake.some(segment => segment.x === x && segment.y === y);
+    } while (jestNaWeszu);
+    food = {x, y};
+}
+
+function rysujPlansze() {
+    ctx.fillStyle = '#228B22';
+    for (let wiersz = 0; wiersz < wiersze; wiersz++) {
+        for (let kolumna = 0; kolumna < kolumny; kolumna++) {
+            ctx.fillRect(
+                kolumna * rozmiar + 1,
+                wiersz * rozmiar + 1,
+                rozmiar - 2,
+                rozmiar - 2
+            );
+        }
+    }
+}
+
+function rysuj() {
+    rysujPlansze();
+
+    ctx.fillStyle = 'blue';
+    snake.forEach(segment => {
+        ctx.fillRect(segment.x * rozmiar + 1, segment.y * rozmiar + 1, rozmiar - 2, rozmiar - 2);
+    });
+
+    ctx.fillStyle = 'red';
+    ctx.fillRect(food.x * rozmiar + 1, food.y * rozmiar + 1, rozmiar - 2, rozmiar - 2);
+}
+
+function aktualizuj() {
+    if (gameOver) return;
+
+    direction = nextDirection;
+
+    const nowyX = snake[0].x + direction.x;
+    const nowyY = snake[0].y + direction.y;
+
+    if (nowyX < 0 || nowyX >= kolumny || nowyY < 0 || nowyY >= wiersze ||
+        snake.some(segment => segment.x === nowyX && segment.y === nowyY)) {
+        koniecGry();
+        return;
+    }
+
+    snake.unshift({x: nowyX, y: nowyY});
+
+    if (nowyX === food.x && nowyY === food.y) {
+        wynik++;
+        document.getElementById('wynik').innerText = wynik;
+        losujFood();
+    } else {
+        snake.pop();
+    }
+
+    rysuj();
+}
+
+function koniecGry() {
+    clearInterval(gameInterval);
+    gameOver = true;
+    document.getElementById('finalnyWynik').innerText = wynik;
+    document.getElementById('menuKoniec').style.display = 'flex';
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === ' ') {
+        e.preventDefault();
+        resetujGre();
+        return;
+    }
+
+    if (gameOver) return;
+
+    const key = e.key;
+    let nowaD = {...direction};
+
+    if (key === 'ArrowUp' && direction.y !== 1) nowaD = {x: 0, y: -1};
+    else if (key === 'ArrowDown' && direction.y !== -1) nowaD = {x: 0, y: 1};
+    else if (key === 'ArrowLeft' && direction.x !== 1) nowaD = {x: -1, y: 0};
+    else if (key === 'ArrowRight' && direction.x !== -1) nowaD = {x: 1, y: 0};
+
+    if (nowaD.x !== -direction.x || nowaD.y !== -direction.y) {
+        nextDirection = nowaD;
+    }
+});
+
+document.getElementById('reset').addEventListener('click', resetujGre);
+
+function resetujGre() {
+    clearInterval(gameInterval);
+    snake = [{x: 8, y: 8}];
+    direction = {x: 1, y: 0};
+    nextDirection = {x: 1, y: 0};
+    wynik = 0;
+    document.getElementById('wynik').innerText = wynik;
+    gameOver = false;
+    document.getElementById('menuKoniec').style.display = 'none';
+    losujFood();
+    rysuj();
+    gameInterval = setInterval(aktualizuj, 100);
+}
+
+losujFood();
+rysuj();
+gameInterval = setInterval(aktualizuj, 100);
+</script>
+</body>
+</html>
