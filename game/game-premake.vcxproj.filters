@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{E9C7FDCE-D52A-8D73-7EB0-C5296AF258F6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{21EB8090-0D4E-1035-B6D3-48EBA215DCB7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application Resource Files">
+      <UniqueIdentifier>{D4D62349-C0E6-CF19-29A0-343815CFBEB2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\headers\entity.h" />
+    <ClInclude Include="src\headers\renderer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\core\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\headers\player.h" />
+    <ClCompile Include="src\core\renderer.cpp" />
+    <ClCompile Include="src\entities\entity.cpp" />
+    <ClCompile Include="src\headers\inputHandler.h" />
+    <ClCompile Include="src\core\inputHandler.cpp" />
+    <ClCompile Include="src\entities\player.cpp" />
+  </ItemGroup>
+</Project>

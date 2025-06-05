@@ -1,0 +1,21 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (obj\x64\Debug\) contains files shared from another project (game-premake.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  inputHandler.cpp
+  renderer.cpp
+C:\Users\Admin\Desktop\game\game-premake-main\game\src\core\renderer.cpp(14,80): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Admin\Desktop\game\game-premake-main\game\src\core\renderer.cpp(14,57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Admin\Desktop\game\game-premake-main\game\src\core\renderer.cpp(14,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Admin\Desktop\game\game-premake-main\game\src\core\renderer.cpp(20,145): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Admin\Desktop\game\game-premake-main\game\src\core\renderer.cpp(20,132): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Admin\Desktop\game\game-premake-main\game\src\core\renderer.cpp(20,83): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Admin\Desktop\game\game-premake-main\game\src\core\renderer.cpp(20,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  entity.cpp
+  player.cpp
+  inputHandler.h
+  player.h
+  main.cpp
+  Generating Code...
+obj\x64\Debug\inputHandler.obj : warning LNK4042: object specified more than once; extras ignored
+obj\x64\Debug\player.obj : warning LNK4042: object specified more than once; extras ignored
+main.obj : error LNK2019: unresolved external symbol "public: class std::vector<class std::vector<enum Fields,class std::allocator<enum Fields> >,class std::allocator<class std::vector<enum Fields,class std::allocator<enum Fields> > > > __cdecl Map::mapToVector(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?mapToVector@Map@@QEAA?AV?$vector@V?$vector@W4Fields@@V?$allocator@W4Fields@@@std@@@std@@V?$allocator@V?$vector@W4Fields@@V?$allocator@W4Fields@@@std@@@std@@@2@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@@Z) referenced in function main
+main.obj : error LNK2019: unresolved external symbol "public: void __cdecl Map::showMap(class std::vector<class std::vector<enum Fields,class std::allocator<enum Fields> >,class std::allocator<class std::vector<enum Fields,class std::allocator<enum Fields> > > > &)" (?showMap@Map@@QEAAXAEAV?$vector@V?$vector@W4Fields@@V?$allocator@W4Fields@@@std@@@std@@V?$allocator@V?$vector@W4Fields@@V?$allocator@W4Fields@@@std@@@std@@@2@@std@@@Z) referenced in function main
+..\bin\Debug\game-premake.exe : fatal error LNK1120: 2 unresolved externals
